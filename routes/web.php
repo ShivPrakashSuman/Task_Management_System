@@ -16,7 +16,7 @@ use App\Http\Controllers\dashboardController;
 |
 */
     Auth::routes();
-    
+
 //  Authentication Routes...
     Route::get('login', [LoginController::class,'showlogin'])->name('login');
     Route::post('/loginStore', [LoginController::class, 'loginStore'])->name('login.store');
@@ -24,5 +24,7 @@ use App\Http\Controllers\dashboardController;
     Route::get('register', [RegisterController::class,'showRegister'])->name('register');
     Route::post('/registerStore', [RegisterController::class, 'create'])->name('register.store');
 
-//  logged in! ...
+// logged in ! ...
     Route::get('dashboard',[dashboardController::class,'index'])->name('dashboard');
+
+    Route::resource('todoTask','App\Http\Controllers\todoTaskControll')->middleware('auth');

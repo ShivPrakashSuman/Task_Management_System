@@ -19,7 +19,11 @@ class todoTaskControll extends Controller
      */
     public function create()
     {
-        //
+        $response = array('status'=>false, 'message'=>'oop\'s something went wrong', 'data'=>null);
+
+            $response['message'] =  "Fetch Data Success";
+            $response['status'] = true;
+        return $response;
     }
 
     /**
@@ -27,7 +31,11 @@ class todoTaskControll extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $response = array('status'=>false, 'message'=>'oop\'s something went wrong', 'data'=>null);
+
+            $response['message'] =  "Fetch Data Success";
+            $response['status'] = true;
+        return $response;
     }
 
     /**
