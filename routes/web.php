@@ -13,21 +13,19 @@ use App\Http\Controllers\Auth\RegisterController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Auth::routes();
 
 Route::get('/user', function () {
     return view('welcome');
 });
 
-
 // Authentication Routes...
-Route::get('login', [LoginController::class,'showlogin'])->name('login');
+Route::get('login', [LoginController::class,'showlogin']);
 Route::post('/loginStore', [LoginController::class, 'loginStore'])->name('login.store');
+Route::post('logout', [LoginController::class,'logout']);
 Route::get('dashboard',[LoginController::class,'dashboard'])->name('dashboard');
-Route::post('logout', [LoginController::class,'logout'])->name('logout');
 // Registration Routes...
-Route::get('register', [RegisterController::class,'register'])->name('register');
-Route::post('/store', [RegisterController::class, 'create'])->name('register.store');
-Auth::routes();
+Route::get('register', [RegisterController::class,'showRegister']);
+Route::post('/registerStore', [RegisterController::class, 'create'])->name('register.store');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
