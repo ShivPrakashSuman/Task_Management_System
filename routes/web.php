@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\dashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,13 +21,11 @@ Route::get('/user', function () {
     return view('welcome');
 });
 
-// Authentication Routes...
-Route::get('login', [LoginController::class,'showlogin']);
-Route::post('/loginStore', [LoginController::class, 'loginStore'])->name('login.store');
-Route::post('logout', [LoginController::class,'logout']);
-Route::get('dashboard',[LoginController::class,'dashboard'])->name('dashboard');
-// Registration Routes...
-Route::get('register', [RegisterController::class,'showRegister']);
-Route::post('/registerStore', [RegisterController::class, 'create'])->name('register.store');
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//  Authentication Routes...
+    Route::get('login', [LoginController::class,'showlogin'])->name('login');
+    Route::post('/loginStore', [LoginController::class, 'loginStore'])->name('login.store');
+    Route::post('logout', [LoginController::class,'logout'])->name('logout');
+    Route::get('register', [RegisterController::class,'showRegister'])->name('register');
+    Route::post('/registerStore', [RegisterController::class, 'create'])->name('register.store');
+//  logged in! ...
+    Route::get('dashboard',[dashboardController::class,'index'])->name('dashboard');

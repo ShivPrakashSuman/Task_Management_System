@@ -48,7 +48,7 @@ class LoginController extends Controller
             $credentials = $request->only('email', 'password');
             if (Auth::attempt($credentials)) {
                 Auth::login($user);
-                return redirect('/user')->with('success', 'You are logged in!');
+                return redirect('/dashboard')->with('success', 'You are logged in!');
             } else {
                 if ($user) {
                     $request->session()->flash('warning', 'Password Not Match');
