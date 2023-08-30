@@ -18,7 +18,7 @@ use App\Http\Controllers\dashboardController;
     Auth::routes();
 
 //  Authentication Routes...
-    Route::get('/', [RegisterController::class,'showLoginRegister'])->name('register');
+    Route::get('/login_register', [RegisterController::class,'showLoginRegister'])->name('login_register');
     Route::post('/registerStore', [RegisterController::class, 'create'])->name('register.store');
     Route::post('/loginStore', [LoginController::class, 'loginStore'])->name('login.store');
     Route::post('logout', [LoginController::class,'logout'])->name('logout');

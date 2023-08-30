@@ -37,7 +37,7 @@ class LoginController extends Controller
         try {
             $validator = $this->validator($request->all());
             if ($validator->fails()) {
-                return redirect('login')->withErrors($validator)->withInput();
+                return redirect('/login_register')->withErrors($validator)->withInput();
             }
             $user = User::where('email', '=', $request->email)->first();
             $credentials = $request->only('email', 'password');
@@ -54,7 +54,7 @@ class LoginController extends Controller
             }
         } catch (Exception $e) {
             Session::flash('error', $e->getMessage());
-            return redirect('/login');
+            return redirect('/login_register');
         }
     }
 

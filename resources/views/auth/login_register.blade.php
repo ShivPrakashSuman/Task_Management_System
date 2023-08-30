@@ -44,7 +44,8 @@
                                                             <div class="section text-center">
                                                                 <h4 class="mb-4 pb-3">Log In</h4>
                                                                 <div class="form-group">
-                                                                    <input type="email" class="form-style" placeholder="Your Email"@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+                                                                    <input placeholder="Your Email" id="email" type="email" name="email" 
+                                                                    class="form-style @error('email') is-invalid @enderror" value="{{ old('email') }}" autocomplete="email" autofocus >
                                                                     <i class="fa fa-envelope input-icon" aria-hidden="true"></i>
                                                                     @error('email')
                                                                         <span class="invalid-feedback" role="alert">
@@ -53,8 +54,8 @@
                                                                     @enderror
                                                                 </div>
                                                                 <div class="form-group mt-2">
-                                                                    <input type="password" name="logpass" class="form-style" placeholder="Your Password"
-                                                                    id="logpass" autocomplete="off">
+                                                                    <input placeholder="Your Password" id="password" type="password" name="password"
+                                                                    class="form-control form-style @error('password') is-invalid @enderror"  autocomplete="current-password">
                                                                     <i class="fa fa-lock input-icon " aria-hidden="true"></i>
                                                                 </div>
                                                                 <button type="submit" class="btn mt-4">{{ __('Login') }}</button>
