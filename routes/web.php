@@ -26,4 +26,4 @@ use App\Http\Controllers\dashboardController;
 // logged in ! ...
 
     Route::get('dashboard',[dashboardController::class,'index'])->name('dashboard');
-    Route::resource('todoTask','App\Http\Controllers\todoTaskControll')->middleware('auth');
+    Route::resource('todoTask','App\Http\Controllers\todoTaskControll');

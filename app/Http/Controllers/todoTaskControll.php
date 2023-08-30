@@ -31,7 +31,7 @@ class todoTaskControll extends Controller
 
             $response['message'] =  "Fetch Data Success";
             $response['status'] = true;
-        return $response;
+        return json_encode($response);
     }
 
     /**
