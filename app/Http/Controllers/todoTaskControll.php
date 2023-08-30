@@ -19,7 +19,7 @@ class todoTaskControll extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.todoList.add');
     }
 
     /**
