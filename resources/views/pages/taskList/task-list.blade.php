@@ -23,8 +23,8 @@
                         <div class="row justify-content-center">
                             <div class="col-md-8">
                                 <div class="card">
-                                    <div class="card-header">{{ __('ToDo List index Page header') }}</div>
-                                    <div class="card-body">{{ __('ToDo List index Page mani') }}</div>
+                                    <div class="card-header">{{ __('Task List index Page header') }}</div>
+                                    <div class="card-body">{{ __('Task index Page mani') }}</div>
                                 </div>
                             </div>
                         </div>

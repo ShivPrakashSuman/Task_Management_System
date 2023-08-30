@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html>
 <head>
     @include('includes.head')
 </head>
@@ -10,8 +10,8 @@
             @include('includes.header')
         </header>
         
-        <!----  main content ----->
-        <main class="py-4">
+        <!----  main content  class="py-4" ----->
+        <main class="row">
             @yield('content')
         </main>
 

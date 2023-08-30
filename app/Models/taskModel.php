@@ -5,12 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class todoTaskModel extends Model
+class taskModel extends Model
 {
     use HasFactory;
-
-
-    protected $table = 'todo_task_list';
+    protected $table = 'task_list';
 
 
     protected $primaryKey = 'id';
@@ -19,11 +17,10 @@ class todoTaskModel extends Model
 
 
     protected $fillable = [
-        'task_name',
-        'comment',
-        'date',
-        'status',
-
+        'user_id',
+        'title',
+        'description',
+        'due_date',
+        'status'
     ];
-
 }
