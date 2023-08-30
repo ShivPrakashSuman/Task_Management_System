@@ -52,7 +52,7 @@ class RegisterController extends Controller
     {
         $validator = $this->validator($request->all());
         if($validator->fails()){
-            return redirect('register')->withErrors($validator)->withInput();
+            return redirect('login_register')->withErrors($validator)->withInput();
         }
         User::create([
             'name' => $request['name'],

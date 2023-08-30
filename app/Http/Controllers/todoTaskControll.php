@@ -11,7 +11,7 @@ class todoTaskControll extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.todoList.list');
     }
 
     /**
