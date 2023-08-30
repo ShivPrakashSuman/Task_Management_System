@@ -26,8 +26,8 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    public function showRegister(){
-        return view('auth.register');
+    public function showLoginRegister(){
+        return view('auth.login_register');
     }
 
     protected $redirectTo = RouteServiceProvider::HOME;

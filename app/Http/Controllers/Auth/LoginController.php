@@ -24,11 +24,6 @@ class LoginController extends Controller
 
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    public function showLogin()
-    {
-        return view('auth.login');
-    }
-
     protected function validator(array $data)
     {
         return Validator::make($data, [
