@@ -7,8 +7,7 @@
     <ul class="text-secondary">
         <li><a href="{{ route('dashboard') }}" title=""><i class="fa fa-clock-o me-3" aria-hidden="true"></i>Dashboard</a></li>
         <li><a href="task" title=""><i class="fa fa-codepen me-3"></i>Task</a></li>
-        <li><a href="todoTask" title=""><i class="fa fa-file-text-o me-3" aria-hidden="true"></i>Todo List</a></li>
-        <li><a href="todoTask/create" title=""><i class="fa fa-file-text-o me-3" aria-hidden="true"></i>Todo List Add</a></li>
+        <li><a href="task/create" title=""><i class="fa fa-file-text-o me-3" aria-hidden="true"></i>Task Add</a></li>
         <li><a href="" title=""><i class="fa fa-anchor me-3" aria-hidden="true"></i>Negition</a></li>
         <li><a href="" title=""><i class="fa fa-cog me-3" aria-hidden="true"></i>Setting</a></li>
     </ul>

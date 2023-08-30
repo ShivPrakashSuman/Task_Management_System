@@ -27,4 +27,3 @@ use App\Http\Controllers\dashboardController;
 
     Route::get('dashboard',[dashboardController::class,'index'])->name('dashboard');
     Route::resource('task','App\Http\Controllers\taskController');
-    Route::resource('todoTask','App\Http\Controllers\todoTaskControll');

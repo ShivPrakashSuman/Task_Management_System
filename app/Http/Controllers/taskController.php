@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\taskModel;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 class taskController extends Controller
 {
     /**
@@ -11,7 +13,8 @@ class taskController extends Controller
      */
     public function index()
     {
-        return view('pages.taskList.task-list');
+        $cate = taskModel::all();
+        return view('pages.taskList.task-list', compact('cate'));
     }
 
     /**
@@ -19,7 +22,7 @@ class taskController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.taskList.task-add');
     }
 
     /**
@@ -27,12 +30,29 @@ class taskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'task_name' => 'required',
+            'comment' => 'required',
+            'date' => 'required',
+            'status' => 'required'
+        ]);
+        $data = array(
+            "task_name" => $request['task_name'],
+            "comment" => $request['comment'],
+            "date" => $request['date'],
+            "status" => $request['status']
+        );
+        $result = taskModel::create($data);
+        Session::flash('success', 'Data Save SuccessFully');
+        return back();
+
+        // $response = array('status'=>false, 'message'=>'oop\'s something went wrong', 'data'=>null);
+
+        //     $response['message'] =  "Fetch Data Success";
+        //     $response['status'] = true;
+        // return json_encode($response);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
@@ -43,7 +63,8 @@ class taskController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $cate = taskModel::find($id);
+        return view('pages.taskList.edit')->with('data', $cate);
     }
 
     /**
@@ -51,7 +72,15 @@ class taskController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $update = [
+            "task_name" => $request->task_name,
+            "comment" => $request->comment,
+            "date" => $request->date,
+            "status" => $request->status,
+        ];
+        taskModel::where('id', $id)->update($update);
+        Session::flash('success', 'User Updated successful!');
+        return redirect();
     }
 
     /**
