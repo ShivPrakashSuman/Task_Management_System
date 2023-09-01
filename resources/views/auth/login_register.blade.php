@@ -48,7 +48,7 @@
                                                                 <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                                             @enderror
                                                         </div>
-                                                        <div class="form-group mt-2">
+                                                        <div class="form-group mt-3">
                                                             <input placeholder="Your Password" id="password" type="password" name="password"
                                                             class="form-control form-style @error('password') is-invalid @enderror"  autocomplete="current-password">
                                                             <i class="fa fa-lock input-icon " aria-hidden="true"></i>
@@ -78,7 +78,7 @@
                                                                 <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                                             @enderror
                                                         </div>
-                                                        <div class="form-group mt-2">
+                                                        <div class="form-group mt-3">
                                                             <input id="username" type="text" placeholder=" User Name"name="username" value="{{ old('username') }}"
                                                             class="form-style form-control @error('username') is-invalid @enderror" autocomplete="username">
                                                             <i class="fa fa-user-circle input-icon" aria-hidden="true"></i>
@@ -86,7 +86,7 @@
                                                                 <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                                             @enderror
                                                         </div>
-                                                        <div class="form-group mt-2">
+                                                        <div class="form-group mt-3">
                                                             <input id="email" type="email" placeholder="Email" name="email" value="{{ old('email') }}" 
                                                             class="form-style form-control @error('email') is-invalid @enderror" autocomplete="email">
                                                             <i class="fa fa-envelope input-icon" aria-hidden="true"></i>
@@ -94,13 +94,18 @@
                                                                 <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                                             @enderror
                                                         </div>
-                                                        <div class="form-group mt-2">
+                                                        <div class="form-group mt-3">
                                                             <input id="password" type="password" placeholder="Password" name="password"
                                                             class="form-style form-control @error('password') is-invalid @enderror" autocomplete="new-password">
                                                             <i class="fa fa-lock input-icon " aria-hidden="true"></i>
                                                             @error('password')
                                                                 <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                                             @enderror
+                                                        </div>
+                                                        <div class="form-group mt-3">
+                                                            <input id="password-confirm"" type="password" placeholder="confirm Password" name="password_confirmation"
+                                                            class="form-style form-control @error('confirm_password') is-invalid @enderror" autocomplete="new-password">
+                                                            <i class="fa fa-lock input-icon " aria-hidden="true"></i>
                                                         </div>
                                                         <button type="submit" class="btn mt-4">{{ __('Register') }}</button>
                                                     </form>

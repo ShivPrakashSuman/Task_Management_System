@@ -40,85 +40,62 @@
                     <div class="col-lg-3 mt-2">
                         <div class="box1 rounded-4 p-3">
                             <h5 class="pt-1 ps-1">To do</h5>
-                            <div class="bg-white rounded-4">
-                                <h5 class="pt-1 ps-3"><b>Restiriast Case</b></h5>
+                            @foreach ($taskData as $id => $row)
+                            <div class="bg-white rounded-4 p-1 my-3">
+                                <h5 class="pt-1 ps-3"><b>{{ $row->title }}</b></h5>
                                 <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
-                                <p class="ps-3 pb-2 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
+                                <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
                             </div>
-                            <div class="bg-white rounded-4">
-                                <h5 class="pt-1 ps-3"><b>Restiriast Case</b></h5>
-                                <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
-                                <p class="ps-3 pb-2 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
-                            </div>
-                            <div class="bg-white rounded-4">
-                                <h5 class="pt-1 ps-3"><b>Restiriast Case</b></h5>
-                                <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
-                                <p class="ps-3 pb-2 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-lg-3 mt-2">
                         <div class="box2 rounded-4 p-3">
                             <h5 class="pt-1 ps-4">In progress</h5>
-                            <div class="bg-white rounded-4">
+                            <div class="bg-white rounded-4 p-1 my-3">
                                 <h5 class="pt-1 ps-3"><b>Restiriast Case</b></h5>
                                 <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
-                                <p class="ps-3 pb-2 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
+                                <p class="ps-3 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
                             </div>
-                            <div class="bg-white rounded-4">
+                            <div class="bg-white rounded-4 p-1 my-3">
                                 <h5 class="pt-1 ps-3"><b>Restiriast Case</b></h5>
                                 <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
-                                <p class="ps-3 pb-2 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
+                                <p class="ps-3 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
                             </div>
-                            <div class="bg-white rounded-4">
+                            <div class="bg-white rounded-4 p-1 my-3">
                                 <h5 class="pt-1 ps-3"><b>Restiriast Case</b></h5>
                                 <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
-                                <p class="ps-3 pb-2 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
-                            </div>
-                            <div class="bg-white rounded-4">
-                                <h5 class="pt-1 ps-3"><b>Restiriast Case</b></h5>
-                                <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
-                                <p class="ps-3 pb-2 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
+                                <p class="ps-3 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 mt-2">
                         <div class="box3 rounded-4 p-3">
                             <h5 class="pt-1 ps-4">On approval</h5>
-                            <div class="bg-white rounded-4">
+                            <div class="bg-white rounded-4 p-1 my-3">
                                 <h5 class="pt-1 ps-3"><b>Restiriast Case</b></h5>
                                 <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
-                                <p class="ps-3 pb-2 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
+                                <p class="ps-3 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
                             </div>
-                            <div class="bg-white rounded-4">
+                            <div class="bg-white rounded-4 p-1 my-3">
                                 <h5 class="pt-1 ps-3"><b>Restiriast Case</b></h5>
                                 <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
-                                <p class="ps-3 pb-2 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
+                                <p class="ps-3 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 mt-2">
                         <div class="box4 rounded-4 p-3">
                             <h5 class="pt-1 ps-4">Done</h5>
-                            <div class="bg-white rounded-4">
+                            <div class="bg-white rounded-4 p-1 my-3">
                                 <h5 class="pt-1 ps-3"><b>Restiriast Case</b></h5>
                                 <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
-                                <p class="ps-3 pb-2 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
+                                <p class="ps-3 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
                             </div>
-                            <div class="bg-white rounded-4">
+                            <div class="bg-white rounded-4 p-1 my-3">
                                 <h5 class="pt-1 ps-3"><b>Restiriast Case</b></h5>
                                 <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
-                                <p class="ps-3 pb-2 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
-                            </div>
-                            <div class="bg-white rounded-4">
-                                <h5 class="pt-1 ps-3"><b>Restiriast Case</b></h5>
-                                <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
-                                <p class="ps-3 pb-2 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
-                            </div>
-                            <div class="bg-white rounded-4">
-                                <h5 class="pt-1 ps-3"><b>Restiriast Case</b></h5>
-                                <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
-                                <p class="ps-3 pb-2 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
+                                <p class="ps-3 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
                             </div>
                         </div>
                     </div>
