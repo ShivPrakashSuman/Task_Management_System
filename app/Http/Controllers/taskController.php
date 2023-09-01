@@ -46,14 +46,7 @@ class taskController extends Controller
         );
         $result = taskModel::create($data);
         Session::flash('success', 'Data Save SuccessFully');
-        return back();
-
-
-        // $response = array('status'=>false, 'message'=>'oop\'s something went wrong', 'data'=>null);
-
-        //     $response['message'] =  "Fetch Data Success";
-        //     $response['status'] = true;
-        // return json_encode($response);
+        return redirect()->back();
     }
 
     public function show(string $id)
@@ -67,7 +60,7 @@ class taskController extends Controller
     public function edit(string $id)
     {
         $cate = taskModel::find($id);
-        return view('pages.taskList.edit')->with('data', $cate);
+        return view('pages.taskList.task-edit')->with('data', $cate);
     }
 
     /**
@@ -76,15 +69,15 @@ class taskController extends Controller
     public function update(Request $request, string $id)
     {
         $update = [
-            "user_id"=>auth()->user()->id,
             "title" => $request->title,
             "description" => $request->description,
             "due_date" => $request->due_date,
             "status" => $request->status,
         ];
+
         taskModel::where('id', $id)->update($update);
         Session::flash('success', 'User Updated successful!');
-        return redirect();
+        return redirect ()->to('/task');
     }
 
     /**
@@ -92,6 +85,8 @@ class taskController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        taskModel::destroy($id);
+        Session::flash('success', 'User Updated successful!');
+        return redirect ()->to('/task');
     }
 }

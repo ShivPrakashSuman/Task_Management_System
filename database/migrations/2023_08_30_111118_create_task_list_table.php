@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('due_date')->nullable();
             $table->string('status')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

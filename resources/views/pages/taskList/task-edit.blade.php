@@ -123,22 +123,22 @@
                                     <div class="mb-3">
                                          <input type="text" id="title" name="title" placeholder=" title"
                                           class="fadeIn form-control @error('title') is-invalid @enderror"
-                                          value="{{ old('title')}}" autocomplete="title" autofocus >
+                                          value="{{ $data->title }}"autocomplete="title" autofocus >
                                      </div>
                                      <div class="mb-3">
                                          <input type="text" id="description" name="description"  placeholder="description"
                                           class="fadeIn form-control  @error('description') is-invalid @enderror"
-                                          value="{{ old('description') }}" autocomplete="description" autofocus >
+                                          value="{{ $data->description }}" autocomplete="description" autofocus >
                                      </div>
                                      <div class="mb-3">
                                          <input type="date" id="due_date" name="due_date" placeholder="due_date"
                                           class="fadeIn form-control  @error('due_date') is-invalid @enderror"
-                                          value="{{ old('date') }}" autocomplete="date" autofocus>
+                                          value="{{ $data->due_date }}" autocomplete="date" autofocus>
                                      </div>
                                      <div class="mb-3">
                                          <input type="text" id="status" name="status" placeholder="status"
                                          class="fadeIn form-control  @error('status') is-invalid @enderror"
-                                         value="{{ old('status') }}" autocomplete="status" autofocus>
+                                         value="{{ $data->status }}" autocomplete="status" autofocus>
                                      </div>
                                          <input type="submit" value="Submit" />
                                 </form>
