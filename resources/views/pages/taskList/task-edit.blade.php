@@ -117,8 +117,9 @@
                         <div class="row justify-content-center main">
                             <div id="formContent">
                                 <h1>Create Form</h1>
-                                <form action="{{ route('task.store') }}" method="post">
-                                     @csrf
+                                <form action="{{ route('task.update',$data->id) }}" method="post">
+                                   @csrf
+                                   @method('PUT')
                                     <div class="mb-3">
                                          <input type="text" id="title" name="title" placeholder=" title"
                                           class="fadeIn form-control @error('title') is-invalid @enderror"

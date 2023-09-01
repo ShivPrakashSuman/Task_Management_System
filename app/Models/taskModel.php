@@ -21,6 +21,6 @@ class taskModel extends Model
         'title',
         'description',
         'due_date',
-        'status'
+        'status',
     ];
 }

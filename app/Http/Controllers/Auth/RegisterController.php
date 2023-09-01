@@ -60,7 +60,7 @@ class RegisterController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($request['password'])
         ]);
-        Session::flash('message', 'Data Save SuccessFully'); 
+        Session::flash('message', 'Data Save SuccessFully');
         return redirect()->back();
     }
 }

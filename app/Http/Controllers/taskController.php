@@ -31,20 +31,23 @@ class taskController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'task_name' => 'required',
-            'comment' => 'required',
-            'date' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'due_date' => 'required',
             'status' => 'required'
         ]);
-        $data = array(
-            "task_name" => $request['task_name'],
-            "comment" => $request['comment'],
-            "date" => $request['date'],
+        $id = auth()->User()->id;
+            $data=array(
+            "user_id"=>$id,
+            "title" => $request['title'],
+            "description" => $request['description'],
+            "due_date" => $request['due_date'],
             "status" => $request['status']
         );
         $result = taskModel::create($data);
         Session::flash('success', 'Data Save SuccessFully');
         return back();
+
 
         // $response = array('status'=>false, 'message'=>'oop\'s something went wrong', 'data'=>null);
 
@@ -55,7 +58,7 @@ class taskController extends Controller
 
     public function show(string $id)
     {
-        //
+
     }
 
     /**
@@ -73,9 +76,10 @@ class taskController extends Controller
     public function update(Request $request, string $id)
     {
         $update = [
-            "task_name" => $request->task_name,
-            "comment" => $request->comment,
-            "date" => $request->date,
+            "user_id"=>auth()->user()->id,
+            "title" => $request->title,
+            "description" => $request->description,
+            "due_date" => $request->due_date,
             "status" => $request->status,
         ];
         taskModel::where('id', $id)->update($update);
