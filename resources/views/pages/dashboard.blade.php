@@ -41,7 +41,7 @@
                         <div class="box1 rounded-4 p-3">
                             <h5 class="pt-1 ps-1">To do</h5>
                             @foreach ($taskData as $id => $row)
-                            <div class="bg-white rounded-4 p-1 my-3">
+                            <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="src_copy"  draggable="true">
                                 <h5 class="pt-1 ps-3"><b>{{ $row->title }}</b></h5>
                                 <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
                                 <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
@@ -50,9 +50,9 @@
                         </div>
                     </div>
                     <div class="col-lg-3 mt-2">
-                        <div class="box2 rounded-4 p-3">
+                        <div class="box2 rounded-4 p-3" id="dest_copy" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
                             <h5 class="pt-1 ps-4">In progress</h5>
-                            <div class="bg-white rounded-4 p-1 my-3">
+                            <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="src_copy"  draggable="true" >
                                 <h5 class="pt-1 ps-3"><b>Restiriast Case</b></h5>
                                 <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
                                 <p class="ps-3 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3 mt-2">
-                        <div class="box3 rounded-4 p-3">
+                        <div class="box3 rounded-4 p-3" id="dest_copy" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
                             <h5 class="pt-1 ps-4">On approval</h5>
                             <div class="bg-white rounded-4 p-1 my-3">
                                 <h5 class="pt-1 ps-3"><b>Restiriast Case</b></h5>
@@ -85,7 +85,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3 mt-2">
-                        <div class="box4 rounded-4 p-3">
+                        <div class="box4 rounded-4 p-3" id="dest_copy" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
                             <h5 class="pt-1 ps-4">Done</h5>
                             <div class="bg-white rounded-4 p-1 my-3">
                                 <h5 class="pt-1 ps-3"><b>Restiriast Case</b></h5>
@@ -104,4 +104,42 @@
         </div>
     </div>
 </div>
+<script>
+        function dragstart_handler(ev) {
+            console.log("dragStart");
+            ev.dataTransfer.setData("text", ev.target.id);
+            //ev.effectAllowed = "copyMove";
+        }
+
+        function dragover_handler(ev) {
+            console.log("dragOver");
+            ev.currentTarget.style.background = "";
+            ev.preventDefault();
+        }
+
+        function drop_handler(ev) {
+            console.log("Drop",ev.dataTransfer.getData("text"));
+            ev.preventDefault();
+            var id = ev.dataTransfer.getData("text");
+            if (id == "src_move" && ev.target.id == "dest_move"){
+                ev.target.appendChild(document.getElementById(id));
+            }
+            if (id == "src_copy" && ev.target.id == "dest_copy") {
+                var nodeCopy = document.getElementById(id).cloneNode(true);
+                nodeCopy.id = "newId";
+                ev.target.appendChild(nodeCopy);
+            }
+            if (id == "src_copy1" && ev.target.id == "dest_copy") {
+                var nodeCopy = document.getElementById(id).cloneNode(true);
+                nodeCopy.id = "newId";
+                ev.target.appendChild(nodeCopy);
+            }
+            if (id == "src_copy2" && ev.target.id == "dest_copy") {
+                var nodeCopy = document.getElementById(id).cloneNode(true);
+                nodeCopy.id = "newId";
+                ev.target.appendChild(nodeCopy);
+            }
+        }
+
+    </script>
 @endsection

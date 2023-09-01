@@ -15,8 +15,8 @@ class dashboardController extends Controller
 
     public function index()
     {
-        // dd(Auth::users());
-        $taskAll = taskModel::where('user_id','=','3')->get();
+        //print_r( Auth::user()->name );die;
+        $taskAll = taskModel::where('user_id','=','2')->get();
         return view('pages.dashboard')->with('taskData', $taskAll);
     }
 
