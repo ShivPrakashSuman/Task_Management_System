@@ -8,6 +8,7 @@
         width: 100%;
         min-height: 100%;
         padding: 20px;
+
     }
 
     #formContent {
@@ -116,10 +117,10 @@
                     <div class="container">
                         <div class="row justify-content-center main">
                             <div id="formContent">
-                                <h1>Create Form</h1>
+                                <h1 class="mt-5">Create Form</h1>
                                 <form action="{{ route('task.store') }}" method="post">
                                      @csrf
-                                    <div class="mb-3">
+                                    <div class="mb-3 mt-3">
                                          <input type="text" id="title" name="title" placeholder=" title"
                                           class="fadeIn form-control @error('title') is-invalid @enderror"
                                           value="{{ old('title')}}" autocomplete="title" autofocus >

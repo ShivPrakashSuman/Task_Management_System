@@ -6,6 +6,7 @@
             <i class="fa fa-chevron-right"> </i></p>
         </div>
         <i class="fa fa-search float-end" aria-hidden="true"></i>
-        <button type="button" class="btn rounded-5">+ Add Task</button>
+        <a href="{{ route('task.create') }}"><button type="button" class="btn rounded-5">+ Add Task</button></a>
+
     </div>
 </nav>
