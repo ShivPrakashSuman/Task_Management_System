@@ -41,7 +41,7 @@
                         <div class="box1 rounded-4 p-3">
                             <h5 class="pt-1 ps-1">To do</h5>
                             @foreach ($taskData as $id => $row)
-                            <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="src_copy"  draggable="true">
+                            <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
                                 <h5 class="pt-1 ps-3"><b>{{ $row->title }}</b></h5>
                                 <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
                                 <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
@@ -52,7 +52,7 @@
                     <div class="col-lg-3 mt-2">
                         <div class="box2 rounded-4 p-3" id="dest_copy" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
                             <h5 class="pt-1 ps-4">In progress</h5>
-                            <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="src_copy"  draggable="true" >
+                            <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="In_progress"  draggable="true" >
                                 <h5 class="pt-1 ps-3"><b>Restiriast Case</b></h5>
                                 <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
                                 <p class="ps-3 text-muted">22/2/2022<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
@@ -106,7 +106,7 @@
 </div>
 <script>
         function dragstart_handler(ev) {
-            console.log("dragStart");
+            console.log("dragStart--",ev.target.id);
             ev.dataTransfer.setData("text", ev.target.id);
             //ev.effectAllowed = "copyMove";
         }
@@ -121,20 +121,18 @@
             console.log("Drop",ev.dataTransfer.getData("text"));
             ev.preventDefault();
             var id = ev.dataTransfer.getData("text");
-            if (id == "src_move" && ev.target.id == "dest_move"){
-                ev.target.appendChild(document.getElementById(id));
+            // if (id == "src_move" && ev.target.id == "dest_move"){
+            //     ev.target.appendChild(document.getElementById(id));
+            // }
+            
+            for(let i = 0; i < 10; i++){ 
+                if (id == i && ev.target.id == "dest_copy") {
+                    var nodeCopy = document.getElementById(id).cloneNode(true);
+                    nodeCopy.id = "newId";
+                    ev.target.appendChild(nodeCopy);
+                }
             }
-            if (id == "src_copy" && ev.target.id == "dest_copy") {
-                var nodeCopy = document.getElementById(id).cloneNode(true);
-                nodeCopy.id = "newId";
-                ev.target.appendChild(nodeCopy);
-            }
-            if (id == "src_copy1" && ev.target.id == "dest_copy") {
-                var nodeCopy = document.getElementById(id).cloneNode(true);
-                nodeCopy.id = "newId";
-                ev.target.appendChild(nodeCopy);
-            }
-            if (id == "src_copy2" && ev.target.id == "dest_copy") {
+            if (id == "In_progress" && ev.target.id == "dest_copy") {
                 var nodeCopy = document.getElementById(id).cloneNode(true);
                 nodeCopy.id = "newId";
                 ev.target.appendChild(nodeCopy);
