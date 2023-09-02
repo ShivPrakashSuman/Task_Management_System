@@ -45,7 +45,7 @@ class LoginController extends Controller
             $user = User::where('email', $request->email)->orWhere('username', $request->username)->first();
 
             if (auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password']))) {
-                Auth::guard('admin')->login($user);
+                Auth::guard('admin')->login($user); 
                 return redirect('/dashboard')->with('success', 'You are logged in!');
             } else {
                 if ($fieldType == 'email' && !$user) {
