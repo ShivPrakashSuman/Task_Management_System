@@ -1,3 +1,19 @@
+<link rel="icon" type="image/png" href="https://img.icons8.com/?size=512&id=3S5sGwmzdVzW&format=png">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<style>
+.bi::before, [class^="bi-"]::before, [class*=" bi-"]::before {
+    display: inline-block;
+    font-family: bootstrap-icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: -0.125em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+</style>
 <div class="col-2 bg-white  sidebar p-0">
     <div class="side-header">
         <i class="fa fa-play bg-primary rounded-5 text-white" aria-hidden="true"></i>
@@ -6,7 +22,17 @@
     </div>
     <ul class="text-secondary">
         <li><a href="{{ route('dashboard') }}" title=""><i class="fa fa-clock-o me-3" aria-hidden="true"></i>Dashboard</a></li>
-        <li><a href="task" title=""><i class="fa fa-codepen me-3"></i>Task</a></li>
+        <li class="toggleDrop">
+            <a href="#">
+                <i class="fa fa-globe fa-lg me-3 "></i>task<span class="arrow bg-info"></span>
+            </a>
+            <i class="fa fa-chevron-down ms-5" aria-hidden="true"></i>
+            <ul class="sub-menu collapse toggleDropDown ms-5  bg-info text-white p-3 list-inline fs-5">
+                <li>New Service 1</li>
+                <li>New Service 2</li>
+                <li>New Service 3</li>
+            </ul>
+        </li>
         <li><a href="task/create" title=""><i class="fa fa-file-text-o me-3" aria-hidden="true"></i>Task Add</a></li>
         <li><a href="{{url('pages.taskList/task-add')}}" title=""><i class="fa fa-anchor me-3" aria-hidden="true"></i>Negition</a></li>
         <li><a href="" title=""><i class="fa fa-cog me-3" aria-hidden="true"></i>Setting</a></li>
@@ -32,3 +58,10 @@
         </ul>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+		$(".toggleDrop").click(function (e) {
+		$('ul.toggleDropDown', this).slideToggle("");
+		});
+		});
+</script>

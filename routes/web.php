@@ -26,4 +26,4 @@ use App\Http\Controllers\dashboardController;
 // logged in ! ...
 
     Route::get('dashboard',[dashboardController::class,'index'])->name('dashboard');
-    Route::resource('task','App\Http\Controllers\taskController');
+    Route::resource('task','App\Http\Controllers\taskController')->middleware('auth');
