@@ -2,6 +2,15 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .action{
+        width:270px
+    }
+    .btn{   
+        height: 40px;
+        padding: 0 25px;
+    }
+</style>
 <div class="container-fluid p-0">
     <div class="row m-0 maincont">
         <!-- sidebar content -->
@@ -18,44 +27,36 @@
             <div class="m-4">
                 <div class="row m-0">
                     <!--   Change content  -->
-
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class=""style="border: antiquewhite;">
-                                <div class="card p-2 w-100">
+                                <div class="row">
                                     <div class="d-flex justify-content-between ">
                                         <div class="">
-                                            <h3>Category List</h3>
+                                            <h5>Category List</h5>
                                         </div>
                                         <div class="">
                                           {{-- <a href="{{ route('taskList.edit',$cate->id) }}"><button class="btn btn-primary"><i class="fa fa-edit"></i> Edit</button></a> --}}
                                         </div>
                                     </div>
-                                    <hr class="my-1">
+                                    <hr class="my-2">
                                     <div class="">
-                                        @if (\Session::has('msg'))
-                                            <div class="text-success  text-center ">
-                                               <h6 style=" text-align:center !important;"><b>Success! </b>{!! \Session::get('msg') !!}</h6>
-                                            </div>
-                                        @endif
-                                        <table class="table " >
+                                        <table class="table" >
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>USER_ID</th>
                                                     <th>Title</th>
                                                     <th>Description</th>
-                                                    <th>Due_date</th>
+                                                    <th>Due Date</th>
                                                     <th>Status </th>
-                                                    <th>Action</th>
+                                                    <th class="action">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($cate as $data => $row)
+                                                @foreach ($data as $count => $row)
                                                 <tr>
-                                                    <td>{{$data+1}}</td>
-                                                    <td>{{ $row->user_id}}</td>
-                                                    <td>{{ $row->title}}</td>
+                                                    <td>{{$count+1}}</td>
+                                                    <td class="text-primary">{{ $row->title}}</td>
                                                     <td>{{ $row->description}}</td>
                                                     <td>{{ $row->due_date}}</td>
                                                     <td>{{ $row->status}}</td>
@@ -65,7 +66,7 @@
                                                         <form action="{{ route('task.destroy', $row->id ) }}" method="post">
                                                             @csrf
                                                             @method('DELETE')
-                                                        <button type="submit" class=" btn fa fa-trash text-danger" onclick="return confirm('Are you sure to delete this user?')"></button>
+                                                            <button type="submit" class=" btn fa fa-trash text-danger" onclick="return confirm('Are you sure to delete this user?')"></button>
                                                         </form>
                                                     </td>
                                                 </tr>
@@ -77,7 +78,6 @@
                             </div>
                         </div>
                     </div>
-
                     <!--  end Change content  -->
                 </div>
             </div>

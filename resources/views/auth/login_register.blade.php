@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-@include('includes.toastr') <!-- toastr Show  -->
 <div class="container">
     <div class="row justify-content-center">
         <div>

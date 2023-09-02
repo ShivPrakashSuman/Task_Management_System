@@ -4,6 +4,9 @@
     @include('includes.head')
 </head>
 <body>
+    <!-- Alert Toastr Message  -->
+        @include('includes.toastr') 
+
     <div id="app">
         <!----  Top Bar      ----->
         <header class="row">
