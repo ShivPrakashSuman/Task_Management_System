@@ -1,15 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-    .class{
-        background: transparent;
-        border: none;
-        font-size: 20px;
-        float: right;
-        margin: -5px 0px;
-    }
-</style>
+
 @include('includes.toastr') <!-- toastr Show  -->
 <div class="container">
     <div class="row justify-content-center">
@@ -32,7 +24,7 @@
                                 <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
                                 <label for="reg-log"></label>
                                 <div class="card-3d-wrap mx-auto">
-                                
+                                    <!-- Login page  -->
                                     <div class="card-3d-wrapper">
                                         <div class="card-front">
                                             <div class="center-wrap">
@@ -41,10 +33,10 @@
                                                     <div class="section text-center">
                                                         <h4 class="mb-4 pb-3">Log In</h4>
                                                         <div class="form-group">
-                                                            <input placeholder="Your Email" id="email" type="email" name="email" 
-                                                            class="form-control form-style @error('email') is-invalid @enderror" value="{{ old('email') }}" autocomplete="email" autofocus >
+                                                            <input placeholder="Username Or Email"  id="username" type="username"  name="username" 
+                                                            class="form-control form-style @error('username') is-invalid @enderror" value="{{ old('username') }}" autocomplete="username" autofocus >
                                                             <i class="fa fa-envelope input-icon" aria-hidden="true"></i>
-                                                            @error('email')
+                                                            @error('username')
                                                                 <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                                             @enderror
                                                         </div>
@@ -63,7 +55,7 @@
                                                 </form>
                                             </div>
                                         </div>
-
+                                        <!-- Registar page  -->
                                         <div class="card-back">
                                             <div class="center-wrap">
                                                 <div class="section text-center">

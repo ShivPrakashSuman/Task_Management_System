@@ -140,9 +140,9 @@
 
     .card-3d-wrap {
     position: relative;
-    width: 500px;
+    width: 600px;
     max-width: 100%;
-    height: 500px;
+    height: 530px;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     perspective: 800px;
@@ -192,7 +192,7 @@
     .center-wrap {
     position: absolute;
     width: 100%;
-    padding: 0 35px;
+    padding: 0 47px;
     top: 50%;
     left: 0;
     transform: translate3d(0, -50%, 35px) perspective(100px);

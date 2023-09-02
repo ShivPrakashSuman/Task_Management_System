@@ -50,17 +50,22 @@ class RegisterController extends Controller
 
     protected function create(Request $request)
     {
-        $validator = $this->validator($request->all());
-        if($validator->fails()){
-            return redirect('login_register')->withErrors($validator)->withInput();
+        try {
+            $validator = $this->validator($request->all());
+            if($validator->fails()){
+                return redirect('login_register')->withErrors($validator)->withInput();
+            }
+            User::create([
+                'name' => $request['name'],
+                'username' => $request['username'],
+                'email' => $request['email'],
+                'password' => Hash::make($request['password'])
+            ]);
+            Session::flash('message', 'Data Save SuccessFully');
+            return redirect()->back();
+        } catch (Exception $e) {
+            Session::flash('error', $e->getMessage());
+            return redirect('/login_register');
         }
-        User::create([
-            'name' => $request['name'],
-            'username' => $request['username'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password'])
-        ]);
-        Session::flash('message', 'Data Save SuccessFully');
-        return redirect()->back();
     }
 }

@@ -27,7 +27,7 @@ class LoginController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'email' => ['required', 'string', 'email', 'max:255'],
+            'username' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:4'],
         ]);
     }
@@ -39,16 +39,21 @@ class LoginController extends Controller
             if ($validator->fails()) {
                 return redirect('/login_register')->withErrors($validator)->withInput();
             }
-            $user = User::where('email', '=', $request->email)->first();
-            $credentials = $request->only('email', 'password');
-            if (Auth::attempt($credentials)) {
+            $input = $request->all();
+            $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+            $user = User::where('email', $request->email)->orWhere('username', $request->username)->first();
+
+            if (auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password']))) {
                 Auth::login($user);
                 return redirect('/dashboard')->with('success', 'You are logged in!');
             } else {
-                if ($user) {
-                    $request->session()->flash('warning', 'Password Not Match');
-                } else {
+                if ($fieldType == 'email' && !$user) {
                     Session::flash('warning', 'Email Not Register !');
+                } else if ($fieldType == 'username' && !$user) {
+                    Session::flash('warning', 'User Name Not Register !');
+                } else {
+                    Session::flash('warning', 'Password Not Match');
                 }
                 return redirect()->back();
             }
