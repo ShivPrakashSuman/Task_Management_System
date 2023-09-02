@@ -19,7 +19,7 @@
                     <div class="col-md-4 mt-1">
                         <div class="box rounded-4">
                             <h5 class="pt-4 ps-4">Participants</h5>
-                            <img class="img-fluid ps-3 pt-2 pb-5" src="{{asset('storage/images/team.jpg')}}" style="mix-blend-mode:darken" alt="team image" width="270"> 
+                            <img class="img-fluid ps-3 pt-2 pb-5" src="{{asset('storage/images/team.jpg')}}" style="mix-blend-mode:darken" alt="team image" width="270">
                             <i class="fa fa-plus bg-white rounded-5 p-1 mt-1" aria-hidden="true"></i>
                         </div>
                     </div>
@@ -104,40 +104,5 @@
         </div>
     </div>
 </div>
-<script>
-        function dragstart_handler(ev) {
-            console.log("dragStart--",ev.target.id);
-            ev.dataTransfer.setData("text", ev.target.id);
-            //ev.effectAllowed = "copyMove";
-        }
 
-        function dragover_handler(ev) {
-            console.log("dragOver");
-            ev.currentTarget.style.background = "";
-            ev.preventDefault();
-        }
-
-        function drop_handler(ev) {
-            console.log("Drop",ev.dataTransfer.getData("text"));
-            ev.preventDefault();
-            var id = ev.dataTransfer.getData("text");
-            // if (id == "src_move" && ev.target.id == "dest_move"){
-            //     ev.target.appendChild(document.getElementById(id));
-            // }
-            
-            for(let i = 0; i < 10; i++){ 
-                if (id == i && ev.target.id == "dest_copy") {
-                    var nodeCopy = document.getElementById(id).cloneNode(true);
-                    nodeCopy.id = "newId";
-                    ev.target.appendChild(nodeCopy);
-                }
-            }
-            if (id == "In_progress" && ev.target.id == "dest_copy") {
-                var nodeCopy = document.getElementById(id).cloneNode(true);
-                nodeCopy.id = "newId";
-                ev.target.appendChild(nodeCopy);
-            }
-        }
-
-    </script>
 @endsection

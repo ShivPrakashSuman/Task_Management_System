@@ -3,21 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\taskModel;
 
-class dashboardController extends Controller
+class accountManageController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $id = auth()->User()->id;
-        $taskAll = taskModel::where('user_id','=',$id)->get();
-        return view('pages.dashboard')->with('taskData', $taskAll);
+        //
     }
 
     /**

@@ -1,5 +1,5 @@
 
-<div class="col-2 bg-white  sidebar p-0">
+<div class="col-2 bg-white sidebar p-0">
     <div class="side-header">
         <div class="row">
             <div class="col-md-4">
