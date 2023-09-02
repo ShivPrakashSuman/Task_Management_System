@@ -359,14 +359,12 @@
     padding: 11px 12px;
 }
 .side-header{
-    display: -webkit-inline-box;
 	padding:23px;
 	border-bottom:2px solid gray;
 	width:100%;
+    text-align: center;
 }
-.side-header > p{
-	margin:0 25%;
-}
+
 
 @media screen and (max-width: 1020px) {
   .sidebar{ display:none; }
@@ -383,30 +381,91 @@
 	border-top:2px solid gray;
 	padding-top:5%;
 	width:100%;
+    padding-left: 20px;
 }
 .sidebar > ul{
 	list-style-type:none;
-	padding:0;
-	margin-top:55px;
+	padding-left: 12px;
+	margin-top:20px;
 }
-.sidebar > ul > li{
-	margin-top:26px;
+.sidebar > ul > a {
+    text-decoration: none;
 }
-.sidebar > ul > li > a{
-	padding:6% 15% 6% 15%;
-	text-decoration:none;
-	bs-text-opacity: 1;
-    color: rgba(var(--bs-secondary-rgb),var(--bs-text-opacity));
+span.menu-text:before {
+    position: absolute;
+    content: '';
+    width: 7px;
+    height: 7px;
+    transform: rotate(45deg);
+    top: 0px;
+    bottom: 0;
+    margin: auto 0 auto 8px;
+    border-top: 1.5px solid black;
+    border-right: 1.5px solid black;
+    right: 3px;
 }
-.sidebar > ul > li > a > i{
+
+span.menu-text:hover:before {
+    transform: rotate(135deg);
+    top: -8px;
+    transition: all 0.5s;
+    border-top: 1.5px solid #11a1fd !important;
+    border-right: 1.5px solid #11a1fd !important;
+}
+span.menu-text {
+    width: calc(100% - 45px);
+}
+span.menu-text {
+    display: inline-block;
+    position: relative;
+}
+.sidebar > ul > a > li{
+	margin-top:8px;
+    padding: 10px;
+    font-size: 18px;
+    padding-left: 30px;
+    color: black;
+}
+
+.sidebar > ul > a > li:hover{
+    background: #fbf5ec;
+    color: #11a1fd;
+    transition: all 0.9s;
+
+    /* border-left: 5px solid #054ade;*/
+}
+.overFlowTex{
+    transition: all 0.9s;
+    font-size: 15px;
+    text-decoration: none;
+    color: black !important;
+    padding: 6px 40px 6px 0px;
+}
+.overFlowTex:hover{
+    color: #11a1fd !important;
+}
+a:hover span.icon-dash {
+    width: 20px;
+    background: #11a1fd;
+    transition: all 0.8s;
+    -webkit-transition: all 0.5s;
+}
+.icon-dash {
+    display: inline-block;
+    position: relative;
+    width: 10px;
+    background: black;
+    height: 1px;
+    vertical-align: middle;
+    margin-bottom: 1px;
+    margin-right: 20px;
+}
+.sidebar > ul > a > li > i{
 	font-size:20px;
 }
+
 nav > div > .btn{
 	background-color:#bfc9f4;
-}
-.sidebar > ul > li > a:hover{
-	color:black;
-	font-weight:800;
 }
 .box{
 	background-color:#f3f2f9;

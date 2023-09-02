@@ -1,41 +1,58 @@
-<link rel="icon" type="image/png" href="https://img.icons8.com/?size=512&id=3S5sGwmzdVzW&format=png">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<style>
-.bi::before, [class^="bi-"]::before, [class*=" bi-"]::before {
-    display: inline-block;
-    font-family: bootstrap-icons !important;
-    font-style: normal;
-    font-weight: normal !important;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    vertical-align: -0.125em;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-</style>
+
 <div class="col-2 bg-white  sidebar p-0">
     <div class="side-header">
-        <i class="fa fa-play bg-primary rounded-5 text-white" aria-hidden="true"></i>
-        <p class="mt-2"><b>3:20:00</b></p>
-        <i class="fa fa-chevron-left mt-2 pt-1"></i>
+        <div class="row">
+            <div class="col-md-4">
+                <span><i class="fa fa-play bg-primary rounded-5 text-white" aria-hidden="true"></i></span>
+            </div>
+            <div class="col-md-4 mt-2">
+                <span class=""><b>3:20:00</b></span>
+            </div>
+            <div class="col-md-4 text-end pe-3">
+                <span><i class="fa fa-chevron-left mt-2 pt-1"></i></span>
+            </div>
+        </div>
     </div>
     <ul class="text-secondary">
-        <li><a href="{{ route('dashboard') }}" title=""><i class="fa fa-clock-o me-3" aria-hidden="true"></i>Dashboard</a></li>
-        <li class="toggleDrop">
-            <a href="#">
-                <i class="fa fa-globe fa-lg me-3 "></i>task<span class="arrow bg-info"></span>
-            </a>
-            <i class="fa fa-chevron-down ms-5" aria-hidden="true"></i>
-            <ul class="sub-menu collapse toggleDropDown ms-5  bg-info text-white p-3 list-inline fs-5">
-                <li>New Service 1</li>
-                <li>New Service 2</li>
-                <li>New Service 3</li>
+        <a href="{{ route('dashboard') }}" title="">
+            <li><i class="fa fa-dashboard me-3" aria-hidden="true"></i> Dashboard </li>
+        </a>
+        <a href="javascript:void(0)" title="" class="align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#task" aria-expanded="false">
+            <li><i class="fa fa-tasks me-3" aria-hidden="true"></i><span class="menu-text"> Task </span></li>
+        </a>
+        <div class="collapse mx-5" id="task" style="">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li class="my-3"><a href="{{ route('task.index') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Task List</a></li>
+                <li class="my-3"><a href="{{ route('task.create') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Add New Task</a></li>
             </ul>
-        </li>
-        <li><a href="task/task-edit" title=""><i class="fa fa-file-text-o me-3" aria-hidden="true"></i>Task Add</a></li>
-        <li><a href="{{ route('task.task.edit') }}" title=""><i class="fa fa-anchor me-3" aria-hidden="true"></i>Negition</a></li>
-        <li><a href="" title=""><i class="fa fa-cog me-3" aria-hidden="true"></i>Setting</a></li>
+        </div>
+        <a href="javascript:void(0)" title="" class="align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account" aria-expanded="false">
+            <li><i class="fa fa-user-circle-o me-3" aria-hidden="true"></i><span class="menu-text"> Account </span></li>
+        </a>
+        <div class="collapse mx-5" id="account" style="">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li class="my-3"><a href="{{ route('task.index') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Profile</a></li>
+                <li class="my-3"><a href="{{ route('task.create') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Update</a></li>
+            </ul>
+        </div>
+        <a href="javascript:void(0)" title="" class="align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#todo" aria-expanded="false">
+            <li><i class="fa fa-list-alt me-3" aria-hidden="true"></i><span class="menu-text"> To Do </span></li>
+        </a>
+        <div class="collapse mx-5" id="todo" style="">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li class="my-3"><a href="#" class="rounded overFlowTex"><span class="icon-dash"></span>To Do List</a></li>
+                <li class="my-3"><a href="#" class="rounded overFlowTex"><span class="icon-dash"></span>ToDo New Task</a></li>
+            </ul>
+        </div>
+        <a href="javascript:void(0)" title="" class="align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#setting" aria-expanded="false">
+            <li><i class="fa fa-cog me-3" aria-hidden="true"></i><span class="menu-text"> Setting </span></li>
+        </a>
+        <div class="collapse mx-5" id="setting" style="">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li class="my-3"><a href="{{ route('task.index') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Setting List</a></li>
+                <li class="my-3"><a href="{{ route('task.create') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Add New Setting</a></li>
+            </ul>
+        </div>
     </ul>
     <div class="logout">
         <ul class="navbar-nav ms-auto">
@@ -58,10 +75,4 @@
         </ul>
     </div>
 </div>
-<script>
-    $(document).ready(function () {
-		$(".toggleDrop").click(function (e) {
-		$('ul.toggleDropDown', this).slideToggle("");
-		});
-		});
-</script>
+
