@@ -1,80 +1,16 @@
-
 <style>
-    .main {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        width: 100%;
-        min-height: 100%;
-        padding: 20px;
-    }
-
     #formContent {
-        -webkit-border-radius: 10px 10px 10px 10px;
-        border-radius: 10px 10px 10px 10px;
-        background: #fff;
-        padding: 30px;
-        width: 100%;
         max-width: 80%;
-        position: relative;
-        padding: 0px;
-        -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
-        box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
-        text-align: center;
     }
-
-    input[type=button],
-    input[type=submit],
-    input[type=reset] {
-        background-color: #56baed;
-        border: none;
-        color: white;
-        padding: 15px 80px;
-        text-decoration: none;
-        display: inline-block;
-        text-transform: uppercase;
-        font-size: 13px;
-        -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
-        box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
-        -webkit-border-radius: 5px 5px 5px 5px;
-        border-radius: 5px 5px 5px 5px;
-        margin: 5px 20px 40px 20px;
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -ms-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out;
-    }
-
-    input[type=button]:hover,
-    input[type=button]:hover {
-        background-color: #39ace7;
-    }
-
-    input[type=button]:active,
-    input[type=button]:active,
-    {
-    -moz-transform: scale(0.95);
-    -webkit-transform: scale(0.95);
-    -o-transform: scale(0.95);
-    -ms-transform: scale(0.95);
-    transform: scale(0.95);
-    }
-
     input[type=text],
-    input[type=date] {
+    input[type=date],
+    select[type=select] {
         background-color: #f6f6f6;
         border: none;
-        color: #0d0d0d;
-        padding: 15px 32px;
-
+        padding: 15px 30px;
         text-decoration: none;
         display: inline-block;
-        font-size: 16px;
-        margin: 5px;
         width: 85%;
-        border: 2px solid #f6f6f6;
         -webkit-transition: all 0.5s ease-in-out;
         -moz-transition: all 0.5s ease-in-out;
         -ms-transition: all 0.5s ease-in-out;
@@ -82,15 +18,30 @@
         transition: all 0.5s ease-in-out;
         -webkit-border-radius: 5px 5px 5px 5px;
         border-radius: 5px 5px 5px 5px;
+        border-bottom: 2px solid #f6f6f6;
     }
-
     input[type=text]:focus {
-        background-color: #fff;
+        background-color: #f6f6f6 !important;
         border-bottom: 2px solid #5fbae9;
+    }
+    .form-select, .form-control:focus {
+        color: #1475d6;
+        background-color: #f6f6f6 !important;
+        border-color: #86b7fe;
+        outline: 0;
+        box-shadow: 0 0 0 0rem rgba(13,110,253,.25) !important;
     }
 
     *:focus {
         outline: none;
+    }
+    .backBtn{
+        background: #102770 !important;
+        color: #ffeba7 !important;
+    }
+    .backBtn:hover{
+        background: #ffeba7 !important;
+        color: #102770 !important;
     }
 </style>
 @extends('layouts.app')
@@ -114,33 +65,38 @@
                     <!--   Change content  -->
 
                     <div class="container">
-                        <div class="row justify-content-center main">
-                            <div id="formContent">
-                                <h1>Create Form</h1>
+                        <div class="row justify-content-center">
+                            <div id="formContent" class="shadow bg-white rounded-3 text-center mt-5">
+                                <h1 class="mt-5">Task Update Form</h1>
                                 <form action="{{ route('task.update',$data->id) }}" method="post">
                                    @csrf
                                    @method('PUT')
-                                    <div class="mb-3">
-                                         <input type="text" id="title" name="title" placeholder=" title"
-                                          class="fadeIn form-control @error('title') is-invalid @enderror"
-                                          value="{{ $data->title }}"autocomplete="title" autofocus >
+                                   <div class="my-4">
+                                         <input type="text" id="title" name="title" placeholder="Title"
+                                          class="fadeIn bnn form-control @error('title') is-invalid @enderror"
+                                          value="{{  $data->title }}" autocomplete="title" autofocus >
                                      </div>
-                                     <div class="mb-3">
-                                         <input type="text" id="description" name="description"  placeholder="description"
+                                     <div class="my-3">
+                                         <input type="text" id="description" name="description"  placeholder="Description"
                                           class="fadeIn form-control  @error('description') is-invalid @enderror"
                                           value="{{ $data->description }}" autocomplete="description" autofocus >
                                      </div>
-                                     <div class="mb-3">
-                                         <input type="date" id="due_date" name="due_date" placeholder="due_date"
+                                     <div class="my-4">
+                                         <input type="date" id="due_date" name="due_date" placeholder="Due Date"
                                           class="fadeIn form-control  @error('due_date') is-invalid @enderror"
                                           value="{{ $data->due_date }}" autocomplete="date" autofocus>
                                      </div>
-                                     <div class="mb-3">
-                                         <input type="text" id="status" name="status" placeholder="status"
-                                         class="fadeIn form-control  @error('status') is-invalid @enderror"
-                                         value="{{ $data->status }}" autocomplete="status" autofocus>
+                                     <div class="my-3">
+                                        <select type="select" class="fadeIn form-select @error('status') is-invalid @enderror" aria-label="Default select example" 
+                                            id="status" name="status" autocomplete="status" autofocus>
+                                            <option selected disabled hidden>{{ $data->status }}</option>
+                                            <option value="Holding">Holding</option>
+                                            <option value="Started">Started</option>
+                                            <option value="Finished">Finished</option>
+                                        </select>
                                      </div>
-                                         <input type="submit" value="Submit" />
+                                        <a href="/task" class="btn btn-info my-4 mx-3 backBtn">Back</a>
+                                        <input type="submit" value="Submit" class="btn btn-info my-4"/>  
                                 </form>
                             </div>
                         </div>

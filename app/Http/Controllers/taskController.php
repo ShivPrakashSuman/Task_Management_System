@@ -36,19 +36,14 @@ class taskController extends Controller
             "status" => $request['status']
         );
         $result = taskModel::create($data);
-        Session::flash('success', 'Data Save SuccessFully');
+        Session::flash('success', 'Data SuccessFully');
         return redirect()->back();
-    }
-
-    public function show(string $id)
-    {
-
     }
 
     public function edit(string $id)
     {
-        $cate = taskModel::find($id);
-        return view('pages.taskList.task-edit')->with('data', $cate);
+        $data = taskModel::find($id);
+        return view('pages.taskList.task-edit')->with('data', $data);
     }
 
     public function update(Request $request, string $id)
@@ -59,16 +54,15 @@ class taskController extends Controller
             "due_date" => $request->due_date,
             "status" => $request->status,
         ];
-
         taskModel::where('id', $id)->update($update);
-        Session::flash('success', 'User Updated successful!');
+        Session::flash('info', 'Update SuccessFull!');
         return redirect ()->to('/task');
     }
 
     public function destroy(string $id)
     {
         taskModel::destroy($id);
-        Session::flash('success', 'User Updated successful!');
+        Session::flash('error', 'Deleted ! ');
         return redirect ()->to('/task');
     }
 }
