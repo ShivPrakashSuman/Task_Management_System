@@ -37,7 +37,7 @@
                                 <div class="row">
                                     <div class="d-flex justify-content-between ">
                                         <div class="">
-                                            <h5>Category List</h5>
+                                            <h5>Task List</h5>
                                         </div>
                                         <div class="">
                                           {{-- <a href="{{ route('taskList.edit',$cate->id) }}"><button class="btn btn-primary"><i class="fa fa-edit"></i> Edit</button></a> --}}
@@ -63,7 +63,13 @@
                                                     <td class="text-primary">{{ $row->title}}</td>
                                                     <td>{{ $row->description}}</td>
                                                     <td>{{ $row->due_date}}</td>
-                                                    <td>{{ $row->status}}</td>
+                                                    @if($row->status == 'Holding')
+                                                        <td><span class="badge bg-info rounded-4 px-3 py-2 shadow">{{ $row->status}}<span></td>
+                                                    @elseif ($row->status == 'Started')
+                                                        <td><span class="badge bg-primary rounded-4 px-3 py-2 shadow">{{ $row->status}}<span></td>
+                                                    @else
+                                                        <td><span class="badge bg-success rounded-4 px-3 py-2 shadow">{{ $row->status}}<span></td>
+                                                    @endif
                                                     <td class="d-flex">
                                                         <a href="javascritp:void(0)"data-bs-toggle="modal" data-bs-target="#myModal{{$row->id}}"><button class="btn fa fa-eye text-success"></button></a>
                                                         <a class="mx-1" href="{{ route('task.edit', $row->id) }}"><button class="btn fa fa-edit text-primary"></button></a>
