@@ -3,12 +3,16 @@
 
 @section('content')
 <style>
-    .action{
+    .th_action{
         width:270px
     }
-    .btn{   
-        height: 40px;
-        padding: 0 25px;
+    .backBtn{
+        background: #102770 !important;
+        color: #ffeba7 !important;
+    }
+    .backBtn:hover{
+        background: #ffeba7 !important;
+        color: #102770 !important;
     }
 </style>
 <div class="container-fluid p-0">
@@ -49,7 +53,7 @@
                                                     <th>Description</th>
                                                     <th>Due Date</th>
                                                     <th>Status </th>
-                                                    <th class="action">Action</th>
+                                                    <th class="th_action">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -61,7 +65,7 @@
                                                     <td>{{ $row->due_date}}</td>
                                                     <td>{{ $row->status}}</td>
                                                     <td class="d-flex">
-                                                        <a class="mx-1" href="{{ route('task.show' ,$row->id) }}"><button class="btn fa fa-eye text-success"></button></a>
+                                                        <a href="javascritp:void(0)"data-bs-toggle="modal" data-bs-target="#myModal{{$row->id}}"><button class="btn fa fa-eye text-success"></button></a>
                                                         <a class="mx-1" href="{{ route('task.edit', $row->id) }}"><button class="btn fa fa-edit text-primary"></button></a>
                                                         <form action="{{ route('task.destroy', $row->id ) }}" method="post">
                                                             @csrf
@@ -71,6 +75,9 @@
                                                     </td>
                                                 </tr>
                                                 @endforeach
+                                                @if(!$data)
+                                                    <tr><td colspan="10" class="text-center text-danger">Record Not Found</td></tr>
+                                                @endif
                                             </tbody>
                                         </table>
                                     </div>
@@ -81,6 +88,42 @@
                     <!--  end Change content  -->
                 </div>
             </div>
+            @foreach ($data as $id => $row)
+                <div class="container">
+                <div class="modal fade" id="myModal{{$row->id}}" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title text">{{ $row->title }}</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Description</th>
+                                    <td>{{ $row->description }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Price</th>
+                                    <td>{{ $row->due_date }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Quantity</th>
+                                    <td>{{ $row->status }}</td>
+                                </tr>
+                            </thead>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="{{ route('task.edit', $row->id) }}" type="button" class="btn backBtn" >Update</a>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                        </div>    
+                    </div>
+                </div>
+                </div>
+                @endforeach
         </div>
     </div>
 </div>
