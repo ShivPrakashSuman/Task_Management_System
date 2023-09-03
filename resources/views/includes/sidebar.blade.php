@@ -31,7 +31,7 @@
         </a>
         <div class="collapse mx-5" id="account" style="">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li class="my-3"><a href="{{ route('task.index') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Profile</a></li>
+                <li class="my-3"><a href="{{ route('account.index') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Profile</a></li>
                 <li class="my-3"><a href="{{ route('task.create') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Update</a></li>
             </ul>
         </div>

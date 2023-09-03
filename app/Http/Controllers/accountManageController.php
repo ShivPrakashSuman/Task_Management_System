@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Session;
 class accountManageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-        //
+        $loginUser = auth()->User();
+        return view('pages/accountManage/profile')->with('loginUser', $loginUser);
+
     }
 
     /**
@@ -43,7 +47,8 @@ class accountManageController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $loginUser = User::find($id);
+        return view('pages.accountManage.profile-edit')->with('loginUser',$loginUser);
     }
 
     /**
@@ -51,7 +56,18 @@ class accountManageController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $update = [
+            "name" => $request->name,
+            "username" => $request->username,
+            "email" => $request->email,
+            "mobile" => $request->mobile,
+            "address" => $request->address,
+            "image" => $request->image,
+        ];
+
+        User::where('id', $id)->update($update);
+        Session::flash('success', 'User Updated successful!');
+        return redirect ()->to('/account');
     }
 
     /**

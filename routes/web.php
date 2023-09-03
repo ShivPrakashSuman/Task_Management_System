@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\dashboardController;
-
+use App\Http\Controllers\accountManageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,4 +26,8 @@ use App\Http\Controllers\dashboardController;
 // logged in ! ...
 
     Route::get('dashboard',[dashboardController::class,'index'])->name('dashboard');
+    // crud
     Route::resource('task','App\Http\Controllers\taskController')->middleware('auth');
+   //profile
+
+    Route::resource('account','App\Http\Controllers\accountManageController')->middleware('auth');
