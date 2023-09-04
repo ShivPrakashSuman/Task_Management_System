@@ -10,8 +10,19 @@ class taskController extends Controller
 {
     public function index()
     {
-        $data = taskModel::all();
-        return view('pages.taskList.task-list', compact('data'));
+        $id = auth()->User()->id;
+        $todo_task_list = taskModel::where('user_id','=',$id)->Where('status','=','to_do')->get();
+        $inprogress_task_list = taskModel::where('user_id','=',$id)->Where('status','=','in_progress')->get();
+        $on_approval_task_list = taskModel::where('user_id','=',$id)->Where('status','=','on_approval')->get();
+        $done_task_list = taskModel::where('user_id','=',$id)->Where('status','=','done')->get();
+        $all_task_list = taskModel::all();
+
+        return view('pages.taskList.task-list')
+            ->with('taskList', $all_task_list)
+            ->with('todo_task_list', $todo_task_list)
+            ->with('inprogress_task_list', $inprogress_task_list)
+            ->with('on_approval_task_list', $on_approval_task_list)
+            ->with('done_task_list', $done_task_list);
     }
 
     public function changeStatus()
@@ -24,7 +35,6 @@ class taskController extends Controller
                     "status" => $field_id,
                 ];
                 taskModel::where('id', $task_id)->update($update);
-                Session::flash('info', 'Update SuccessFull!');
                 $response['message'] =  "Update SuccessFull!";
                 $response['status'] = true;
             } else {

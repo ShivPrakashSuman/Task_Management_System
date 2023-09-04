@@ -89,10 +89,7 @@
                                      <div class="my-3">
                                         <select type="select" class="fadeIn form-select @error('status') is-invalid @enderror" aria-label="Default select example" 
                                             id="status" name="status" autocomplete="status" autofocus>
-                                            <option selected disabled hidden>Open this select menu</option>
-                                            <option value="Holding">Holding</option>
-                                            <option value="Started">Started</option>
-                                            <option value="Finished">Finished</option>
+                                            <option value="to_do" selected>To Do</option>
                                         </select>
                                      </div>
                                         <a href="/task" class="btn btn-info my-4 mx-3 backBtn">Back</a>

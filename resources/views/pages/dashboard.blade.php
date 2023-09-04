@@ -140,8 +140,7 @@
             data: '',
             success: function (data){ 
                 let resp = JSON.parse(data);
-                console.log('data=', resp );
-              
+                console.log('data=', resp );  
             }
         });
     }

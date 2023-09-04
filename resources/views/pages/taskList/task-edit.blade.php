@@ -95,7 +95,7 @@
                                             <option value="Finished">Finished</option>
                                         </select>
                                      </div>
-                                        <a href="/account" class="btn btn-info my-4 mx-3 backBtn">Back</a>
+                                        <a href="/task" class="btn btn-info my-4 mx-3 backBtn">Back</a>
                                         <input type="submit" value="Submit" class="btn btn-info my-4"/>
                                 </form>
                             </div>

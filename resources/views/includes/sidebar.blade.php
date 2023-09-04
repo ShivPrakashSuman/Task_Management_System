@@ -14,27 +14,12 @@
         </div>
     </div>
     <ul class="text-secondary">
-        <a href="{{ route('dashboard') }}" title="">
+        <a href="{{ route('dashboard') }}" title="Dashboard">
             <li><i class="fa fa-dashboard me-3" aria-hidden="true"></i> Dashboard </li>
         </a>
-        <a href="javascript:void(0)" title="" class="align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#task" aria-expanded="false">
-            <li><i class="fa fa-tasks me-3" aria-hidden="true"></i><span class="menu-text"> Task </span></li>
+        <a href="{{ route('task.index') }}" title="Task">
+            <li><i class="fa fa-tasks me-3" aria-hidden="true"></i>Task </li>
         </a>
-        <div class="collapse mx-5" id="task" style="">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li class="my-3"><a href="{{ route('task.index') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Task List</a></li>
-                <li class="my-3"><a href="{{ route('task.create') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Add New Task</a></li>
-            </ul>
-        </div>
-        <a href="javascript:void(0)" title="" class="align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account" aria-expanded="false">
-            <li><i class="fa fa-user-circle-o me-3" aria-hidden="true"></i><span class="menu-text"> Account </span></li>
-        </a>
-        <div class="collapse mx-5" id="account" style="">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li class="my-3"><a href="{{ route('account.index') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Profile</a></li>
-                <li class="my-3"><a href="{{ route('task.create') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Update</a></li>
-            </ul>
-        </div>
         <a href="javascript:void(0)" title="" class="align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#todo" aria-expanded="false">
             <li><i class="fa fa-list-alt me-3" aria-hidden="true"></i><span class="menu-text"> To Do </span></li>
         </a>
@@ -42,6 +27,15 @@
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li class="my-3"><a href="#" class="rounded overFlowTex"><span class="icon-dash"></span>To Do List</a></li>
                 <li class="my-3"><a href="#" class="rounded overFlowTex"><span class="icon-dash"></span>ToDo New Task</a></li>
+            </ul>
+        </div>
+        <a href="javascript:void(0)" title="Account" class="align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account" aria-expanded="false">
+            <li><i class="fa fa-user-circle-o me-3" aria-hidden="true"></i><span class="menu-text"> Account </span></li>
+        </a>
+        <div class="collapse mx-5" id="account" style="">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li class="my-3"><a href="{{ route('account.index') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Profile</a></li>
+                <li class="my-3"><a href="{{ route('task.create') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Update</a></li>
             </ul>
         </div>
         <a href="javascript:void(0)" title="" class="align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#setting" aria-expanded="false">
