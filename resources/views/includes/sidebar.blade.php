@@ -49,8 +49,8 @@
         </a>
         <div class="collapse mx-5" id="setting" style="">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li class="my-3"><a href="{{ route('task.index') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Setting List</a></li>
-                <li class="my-3"><a href="{{ route('task.create') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Add New Setting</a></li>
+                <li class="my-3"><a href="{{ route('setting.index') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Setting List</a></li>
+                <li class="my-3"><a href="{{ route('setting.create') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Add New Setting</a></li>
             </ul>
         </div>
     </ul>

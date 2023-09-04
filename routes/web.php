@@ -32,3 +32,7 @@ use App\Http\Controllers\taskController;
     Route::get('/changeStatus', [taskController::class,'changeStatus'])->name('changeStatus')->middleware('auth');
    //profile
     Route::resource('account','App\Http\Controllers\accountManageController')->middleware('auth');
+
+    //seeting
+    Route::resource('setting','App\Http\Controllers\settingController')->middleware('auth');
+
