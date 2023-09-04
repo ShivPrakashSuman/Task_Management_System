@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    @include('includes.head')
+    @include('includes.head') 
 </head>
 <body>
     <!-- Alert Toastr Message  -->

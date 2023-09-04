@@ -14,6 +14,25 @@ class taskController extends Controller
         return view('pages.taskList.task-list', compact('data'));
     }
 
+    public function changeStatus()
+    {  
+        $response = array('status'=>false, 'message'=>'oop\'s something went wrong', 'data'=>null);
+            $task_id = $_GET['task_id'];
+            $field_id = $_GET['field_id'];
+            if($task_id && $field_id){ 
+                $update = [
+                    "status" => $field_id,
+                ];
+                taskModel::where('id', $task_id)->update($update);
+                Session::flash('info', 'Update SuccessFull!');
+                $response['message'] =  "Update SuccessFull!";
+                $response['status'] = true;
+            } else {
+                $response['message'] = 'task_id not found';
+            }
+        echo json_encode($response);
+    }
+
     public function create()
     {
         return view('pages.taskList.task-add');
