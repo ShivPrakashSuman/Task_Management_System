@@ -72,28 +72,36 @@
                                 <form action="{{ route('task.store') }}" method="post">
                                      @csrf
                                     <div class="my-4">
-                                         <input type="text" id="title" name="title" placeholder="Title"
-                                          class="fadeIn bnn form-control @error('title') is-invalid @enderror"
-                                          value="{{ old('title')}}" autocomplete="title" autofocus >
-                                     </div>
-                                     <div class="my-3">
-                                         <input type="text" id="description" name="description"  placeholder="Description"
-                                          class="fadeIn form-control  @error('description') is-invalid @enderror"
-                                          value="{{ old('description') }}" autocomplete="description" autofocus >
-                                     </div>
-                                     <div class="my-4">
-                                         <input type="date" id="due_date" name="due_date" placeholder="Due Date"
-                                          class="fadeIn form-control  @error('due_date') is-invalid @enderror"
-                                          value="{{ old('date') }}" autocomplete="date" autofocus>
-                                     </div>
-                                     <div class="my-3">
-                                        <select type="select" class="fadeIn form-select @error('status') is-invalid @enderror" aria-label="Default select example" 
-                                            id="status" name="status" autocomplete="status" autofocus>
-                                            <option value="to_do" selected>To Do</option>
-                                        </select>
-                                     </div>
-                                        <a href="/task" class="btn btn-info my-4 mx-3 backBtn">Back</a>
-                                        <input type="submit" value="Submit" class="btn btn-info my-4"/>
+                                        <input type="text" id="title" name="title" placeholder="Title"
+                                        class="fadeIn bnn form-control @error('title') is-invalid @enderror"
+                                        value="{{ old('title')}}" autocomplete="title" autofocus >
+                                    </div>
+                                    <div class="my-3">
+                                        <input type="text" id="description" name="description"  placeholder="Description"
+                                        class="fadeIn form-control  @error('description') is-invalid @enderror"
+                                        value="{{ old('description') }}" autocomplete="description" autofocus >
+                                    </div>
+                                    <div class="my-3">
+                                    <select type="select" class="fadeIn form-select @error('status') is-invalid @enderror" aria-label="Default select example" 
+                                        id="status" name="status" autocomplete="status" autofocus>
+                                        <option value="" selected hidden>Task Assign</option>
+                                        <option value="user" >Kuldeep</option>
+                                        <option value="user" >sager</option>
+                                    </select>
+                                    </div>
+                                    <div class="my-4">
+                                        <input type="date" id="due_date" name="due_date" placeholder="Due Date"
+                                        class="fadeIn form-control  @error('due_date') is-invalid @enderror"
+                                        value="{{ old('date') }}" autocomplete="date" autofocus>
+                                    </div>
+                                    <div class="my-3">
+                                    <select type="select" class="fadeIn form-select @error('status') is-invalid @enderror" aria-label="Default select example" 
+                                        id="status" name="status" autocomplete="status" autofocus>
+                                        <option value="to_do" selected>To Do</option>
+                                    </select>
+                                    </div>
+                                    <a href="/task" class="btn btn-info my-4 mx-3 backBtn">Back</a>
+                                    <input type="submit" value="Submit" class="btn btn-info my-4"/>
                                 </form>
                             </div>
                         </div>
