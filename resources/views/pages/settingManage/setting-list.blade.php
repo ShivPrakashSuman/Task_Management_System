@@ -49,7 +49,6 @@
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-
                                                     <th>key</th>
                                                     <th>value</th>
                                                     <th>type </th>
@@ -64,12 +63,11 @@
                                                     <td>{{ $row->value}}</td>
                                                     <td>{{ $row->type}}</td>
                                                    <td class="d-flex">
-                                                        <a class="mx-1" href="{{ route('setting.show' ,$row->id) }}"><button class="btn fa fa-eye text-success"></button></a>
                                                       <form action="{{ route('setting.destroy', $row->id ) }}" method="post">
                                                             @csrf
                                                             @method('DELETE')
                                                         <button type="submit" class=" btn fa fa-trash text-danger" onclick="return confirm('Are you sure to delete this user?')"></button>
-                                                        </form>
+                                                    </form>
                                                     </td>
                                                 </tr>
                                                 @endforeach

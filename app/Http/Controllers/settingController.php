@@ -80,6 +80,6 @@ class settingController extends Controller
     {
         setting::destroy($id);
         Session::flash('error', 'Deleted ! ');
-        return redirect ()->to('/settin');
+        return redirect ()->to('/setting');
     }
 }
