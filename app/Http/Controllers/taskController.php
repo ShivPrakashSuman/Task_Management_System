@@ -15,11 +15,11 @@ class taskController extends Controller
     }
 
     public function changeStatus()
-    {  
+    {
         $response = array('status'=>false, 'message'=>'oop\'s something went wrong', 'data'=>null);
             $task_id = $_GET['task_id'];
             $field_id = $_GET['field_id'];
-            if($task_id && $field_id){ 
+            if($task_id && $field_id){
                 $update = [
                     "status" => $field_id,
                 ];
