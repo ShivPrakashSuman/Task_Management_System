@@ -21,12 +21,12 @@
             <li><i class="fa fa-tasks me-3" aria-hidden="true"></i>Task </li>
         </a>
         <a href="javascript:void(0)" title="" class="align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#todo" aria-expanded="false">
-            <li><i class="fa fa-list-alt me-3" aria-hidden="true"></i><span class="menu-text"> Employee </span></li>
+            <li><i class="fa fa-list-alt me-3" aria-hidden="true"></i><span class="menu-text"> Users </span></li>
         </a>
         <div class="collapse mx-5" id="todo" style="">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li class="my-3"><a href="{{ route('User.index') }} class="rounded overFlowTex"><span class="icon-dash"></span> Employee List</a></li>
-                <li class="my-3"><<a href="{{ route('User.create') }}" class="rounded overFlowTex"><span class="icon-dash"></span> New Employee Add</a></li>
+                <li class="my-3"><a href="{{ route('user.index') }}" class="rounded overFlowTex"><span class="icon-dash"></span> Users List</a></li>
+                <li class="my-3"><a href="{{ route('user.create') }}" class="rounded overFlowTex"><span class="icon-dash"></span> New Users Add</a></li>
             </ul>
         </div>
         <a href="javascript:void(0)" title="Account" class="align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account" aria-expanded="false">

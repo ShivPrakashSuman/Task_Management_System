@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
         $data = User::all();
-        return view('pages.UserManage.user-list', compact('data'));
+        return view('pages.userManage.user-list')->with('userData', $data);
     }
 
     /**
@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('pages.UserManage.user-add');
+        return view('pages.userManage.user-add');
     }
 
     /**
@@ -68,7 +68,7 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $data = User::find($id);
-        return view('pages.UserManage.user-edit')->with('data', $data);
+        return view('pages.userManage.user-edit')->with('data', $data);
     }
 
     /**
@@ -86,7 +86,7 @@ class UserController extends Controller
         ];
         User::where('id', $id)->update($update);
         Session::flash('info', 'Update SuccessFull!');
-        return redirect ()->to('/task');
+        return redirect ()->to('/User');
     }
 
     /**
