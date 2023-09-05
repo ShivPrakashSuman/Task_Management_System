@@ -93,12 +93,12 @@
                                     </div>
                                     <div class="my-4">
                                         <input type="password" id="password" name="password" placeholder="password"
-                                        class="fadeIn form-control  @error('due_date') is-invalid @enderror"
+                                        class="fadeIn form-control  @error('password') is-invalid @enderror"
                                         value="{{ old('password') }}" autocomplete="password" autofocus>
                                     </div>
                                     <div class="my-4">
                                         <input type="number" id="mobile" name="mobile" placeholder="mobile"
-                                        class="fadeIn form-control  @error('due_date') is-invalid @enderror"
+                                        class="fadeIn form-control  @error('mobile') is-invalid @enderror"
                                         value="{{ old('mobile') }}" autocomplete="mobile" autofocus>
                                     </div>
                                     <div class="my-4">
