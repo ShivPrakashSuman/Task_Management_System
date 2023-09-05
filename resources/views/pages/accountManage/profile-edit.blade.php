@@ -101,15 +101,13 @@
                                          value="{{ $loginUser->mobile }}" autocomplete="mobile" autofocus>
                                     </div>
                                     <div class="my-4">
-                                        <textarea type=text id="address" name="address" placeholder="address"
-                                         class="fadeIn form-control  @error('address') is-invalid @enderror"
-                                         value="{{ $loginUser->address }}" autocomplete="address" autofocus>
-                                        </textarea>
+                                        <textarea type=text id="address" name="address"
+                                         class="fadeIn form-control  @error('address') is-invalid @enderror">
+                                         {{ $loginUser->address }} </textarea>
                                     </div>
                                     <div class="my-3">
-
                                     </div>
-                                        <a href="/task" class="btn btn-info my-4 mx-3 backBtn">Back</a>
+                                        <a href="/account" class="btn btn-info my-4 mx-3 backBtn">Back</a>
                                         <input type="submit" value="Submit" class="btn btn-info my-4"/>
                                 </form>
                             </div>

@@ -70,15 +70,15 @@
                         <div class="row justify-content-center">
                             <div id="formContent" class="shadow bg-white rounded-3 text-center mt-5">
                                 <h1 class="mt-5">Create setting</h1>
-                                <form action="{{ route('setting.store') }}" method="post">
+                                <form action="{{ route('setting.store') }}" method="post" enctype="multipart/form-data">
                                      @csrf
                                      <div class="my-3">
                                         <select type="select" class="fadeIn form-select @error('status') is-invalid @enderror" aria-label="Default select example"
                                             id="status" name="status" autocomplete="status" autofocus>
-                                            <option selected disabled hidden>Open this select menu</option>
-                                            <option value="Holding">text</option>
-                                            <option value="Started">number</option>
-                                            <option value="Finished">iamge</option>
+                                            <option selected disabled hidden>Open this select Type</option>
+                                            <option value="text">text</option>
+                                            <option value="number">number</option>
+                                            <option value="iamge">iamge</option>
                                         </select>
                                      </div>
                                      <div class="my-4">
@@ -87,20 +87,20 @@
                                          value="{{ old('key')}}" autocomplete="key" autofocus >
                                     </div>
                                     <div class="my-3">
-                                         <input type="text" id="value" name="value"  placeholder="value"
+                                         <input type="text" id="value" name="value"  placeholder="Text"
                                           class="fadeIn form-control  @error('value') is-invalid @enderror"
                                           value="{{ old('value') }}" autocomplete="value" autofocus >
                                      </div>
-                                    <div class="my-4">
-                                         <input type="number" id="number" name="number" placeholder="number"
-                                          class="fadeIn form-control  @error('due_date') is-invalid @enderror"
-                                          value="{{ old('number') }}" autocomplete="number" autofocus>
+                                    <!-- <div class="my-4">
+                                         <input type="number" id="value" name="value" placeholder="Number"
+                                          class="fadeIn form-control  @error('value') is-invalid @enderror"
+                                          value="{{ old('value') }}" autocomplete="value" autofocus>
                                     </div>
                                     <div class="my-4">
-                                        <input type="file" id="file" name="file" placeholder="file"
-                                         class="fadeIn form-control  @error('due_date') is-invalid @enderror"
-                                         value="{{ old('file') }}" autocomplete="file" autofocus>
-                                   </div>
+                                        <input type="file" id="value" name="value" placeholder="Image"
+                                         class="fadeIn form-control  @error('value') is-invalid @enderror"
+                                         value="{{ old('value') }}" autocomplete="value" autofocus>
+                                   </div> -->
                                       <a href="/setting" class="btn btn-info my-4 mx-3 backBtn">Back</a>
                                         <input type="submit" value="Submit" class="btn btn-info my-4"/>
                                 </form>

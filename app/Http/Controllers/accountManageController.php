@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\setting;
 use Illuminate\Support\Facades\Session;
 class accountManageController extends Controller
 {
@@ -14,46 +15,34 @@ class accountManageController extends Controller
     public function index()
     {
         $loginUser = auth()->User();
-        return view('pages/accountManage/profile')->with('loginUser', $loginUser);
+        $settingData = setting::where('user_id','=',$loginUser->id)->get();
+        return view('pages/accountManage/profile')
+        ->with('loginUser', $loginUser)
+        ->with('settingData', $settingData);
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $loginUser = User::find($id);
         return view('pages.accountManage.profile-edit')->with('loginUser',$loginUser);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $update = [
@@ -70,9 +59,6 @@ class accountManageController extends Controller
         return redirect ()->to('/account');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //

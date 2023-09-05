@@ -78,29 +78,28 @@
                                    @csrf
                                    @method('PUT')
                                    <div class="my-4">
-                                         <input type="text" id="name" name="name" placeholder="name"
+                                         <input type="text" id="name" name="name" placeholder="Full Name"
                                           class="fadeIn bnn form-control @error('name') is-invalid @enderror"
                                           value="{{  $data->name }}" autocomplete="name" autofocus >
                                      </div>
                                      <div class="my-3">
-                                         <input type="text" id="username" name="username"  placeholder="username"
+                                         <input type="text" id="username" name="username"  placeholder="User Name"
                                           class="fadeIn form-control  @error('username') is-invalid @enderror"
                                           value="{{ $data->username }}" autocomplete="username" autofocus >
                                      </div>
                                      <div class="my-4">
-                                         <input type="email" id="email" name="email" placeholder="email"
+                                         <input type="email" id="email" name="email" placeholder="Your Email"
                                           class="fadeIn form-control  @error('email') is-invalid @enderror"
                                           value="{{ $data->email }}" autocomplete="email" autofocus>
                                      </div>
                                     <div class="my-3">
-                                        <input type="number" id="mobile" name="mobile" placeholder="mobile"
+                                        <input type="number" id="mobile" name="mobile" placeholder="Your Contact"
                                           class="fadeIn form-control  @error('email') is-invalid @enderror"
                                           value="{{ $data->mobile }}" autocomplete="mobile" autofocus>
                                      </div>
                                      <div class="my-3">
-                                        <textarea type="text" id="image" name="address" placeholder="address"
-                                          class="fadeIn form-control  @error('address') is-invalid @enderror"
-                                          value="{{ $data->address }}" autocomplete="address" autofocus></textarea>
+                                        <textarea type="text" id="image" name="address" placeholder="address"class="fadeIn form-control @error('address') is-invalid @enderror"
+                                        autocomplete="address" autofocus>{{ $data->address }}</textarea>
                                      </div>
                                      <div class="my-3">
                                         <input type="file" id="image" name="image" placeholder="image"

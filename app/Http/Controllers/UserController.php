@@ -5,41 +5,48 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use App\Models\File;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $data = User::all();
         return view('pages.userManage.user-list')->with('userData', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('pages.userManage.user-add');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:4'],
+            'mobile' => ['required', 'string'],
+            'address' => ['required', 'string'],
+            'image' => ['required','string']
+        ]);
+    }
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'username' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'mobile' => 'required',
-            'address' => 'required',
-            'image' => 'required',
+        $validator = $this->validator($request->all());
+        if($validator->fails()){
+            return redirect('/user/create')->withErrors($validator)->withInput();
+        }
+       // dd('$fileName',$request->image, $request->file('image'));
 
-        ]);
+        if(!$request->file()) {
+            $imgname = rand(1000,100000).$request->image;
+            $request['image']->storeAs('/public/folder/',$imgname);
+            // $fileName = time().'_'.$request->image->getClientOriginalName();
+            // $filePath = $request->file('image')->storeAs('uploads/users', $fileName, 'public');
+        }
         $id = auth()->User()->id;
         $data = array(
             "user_id"=>$id,
@@ -49,33 +56,20 @@ class UserController extends Controller
             "password" => $request['password'],
             "mobile" => $request['mobile'],
             "address" => $request['address'],
-            "image" => $request['image']
+            "image" => $imgname
         );
+        dd($data);
         $result = User::create($data);
         Session::flash('success', 'Data SuccessFully');
         return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $data = user::find($id);
         return view('pages.userManage.user-edit')->with('data', $data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $update = [
@@ -85,16 +79,12 @@ class UserController extends Controller
             "mobile" => $request->mobile,
             "address" => $request->address,
             "image" => $request->image,
-
         ];
         User::where('id', $id)->update($update);
         Session::flash('info', 'Update SuccessFull!');
         return redirect ()->to('/user');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         User::destroy($id);

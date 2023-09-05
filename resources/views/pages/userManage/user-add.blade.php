@@ -77,39 +77,45 @@
                                 <form action="{{ route('user.store') }}" method="post">
                                      @csrf
                                     <div class="my-4">
-                                        <input type="text" id="name" name="name" placeholder="name"
-                                        class="fadeIn bnn form-control @error('name') is-invalid @enderror"
+                                        <input type="text" id="name" name="name" placeholder="Full Name"class="fadeIn bnn form-control @error('name') is-invalid @enderror"
                                         value="{{ old('name')}}" autocomplete="name" autofocus >
                                     </div>
                                     <div class="my-3">
-                                        <input type="text" id="username" name="username"  placeholder="username"
-                                        class="fadeIn form-control  @error('username') is-invalid @enderror"
-                                        value="{{ old('username') }}" autocomplete="username" autofocus >
+                                        <input type="text" id="username" name="username"  placeholder="User Name"
+                                        class="fadeIn form-control  @error('username') is-invalid @enderror"value="{{ old('username') }}" autocomplete="username" autofocus >
+                                        @error('username')
+                                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                        @enderror
                                     </div>
                                     <div class="my-3">
-                                        <input type="email" id="email " name="email" placeholder="email"
-                                        class="fadeIn form-control  @error('email') is-invalid @enderror"
-                                        value="{{ old('email') }}" autocomplete="email" autofocus>
+                                        <input type="email" id="email " name="email" placeholder="Your Email"
+                                        class="fadeIn form-control  @error('email') is-invalid @enderror"value="{{ old('email') }}" autocomplete="email" autofocus>
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                        @enderror
                                     </div>
                                     <div class="my-4">
-                                        <input type="password" id="password" name="password" placeholder="password"
-                                        class="fadeIn form-control  @error('password') is-invalid @enderror"
-                                        value="{{ old('password') }}" autocomplete="password" autofocus>
+                                        <input type="password" id="password" name="password" placeholder="Your Password"
+                                        class="fadeIn form-control  @error('password') is-invalid @enderror"value="{{ old('password') }}" autocomplete="password" autofocus>
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                        @enderror
                                     </div>
                                     <div class="my-4">
-                                        <input type="number" id="mobile" name="mobile" placeholder="mobile"
+                                        <input type="number" id="mobile" name="mobile" placeholder="Your Contact"
                                         class="fadeIn form-control  @error('mobile') is-invalid @enderror"
                                         value="{{ old('mobile') }}" autocomplete="mobile" autofocus>
                                     </div>
                                     <div class="my-4">
-                                        <textarea type="text" id="address" name="address" placeholder="address"
-                                        class="fadeIn form-control  @error('address') is-invalid @enderror"
-                                        value="{{ old('address') }}" autocomplete="address" autofocus></textarea>
+                                        <textarea type="text" id="address" name="address" placeholder="Your Address" 
+                                        class="fadeIn form-control  @error('address') is-invalid @enderror"autocomplete="address" autofocus>{{ old('address') }}</textarea>
                                     </div>
                                     <div class="my-4">
-                                        <input type="file" id="image" name="image" placeholder="image"
-                                        class="fadeIn form-control  @error('address') is-invalid @enderror"
-                                        value="{{ old('image') }}" autocomplete="image" autofocus>
+                                        <input type="file"  id="image" name="image" autocomplete="image" value="{{old('image')}}"
+                                        class="fadeIn form-control  @error('image') is-invalid @enderror" autofocus>
+                                        @error('image')
+                                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                        @enderror
                                     </div>
                                     <a href="/user" class="btn btn-info my-4 mx-3 backBtn">Back</a>
                                     <input type="submit" value="Submit" class="btn btn-info my-4"/>

@@ -7,13 +7,10 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
 
        <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
-		<script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-		<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script> -->
-		<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script> -->
-		<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-		<!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script> -->
+       <script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+       <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+       <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+
 </head>
 <style>
     .th_action{
@@ -91,7 +88,7 @@
                                                     <td>{{ $row->email}}</td>
                                                     <td>{{ $row->mobile}}</td>
                                                     <td>{{ $row->address}}</td>
-                                                    <td><span><i class="fa fa-play bg-primary rounded-5 text-white" aria-hidden="true"></i></span></td>
+                                                    <td class="text-center"><img src="{{asset('storage/images/download.png')}}" class="img-fluid" alt="team image" width="30"></td>
                                                       <td class="d-flex"><a href="javascritp:void(0)"data-bs-toggle="modal" data-bs-target="#myModal{{$row->id}}"><button class="btn fa fa-eye text-success" id="crection_btn"></button></a>
                                                         <a class="mx-1" href="{{ route('user.edit', $row->id) }}"><button class="btn fa fa-edit text-primary" id="crection_btn"></button></a>
                                                         <form action="{{ route('user.destroy', $row->id ) }}" method="post">
@@ -104,16 +101,6 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
-                                        <script>
-                                            $(document).ready(function() {
-                                                $('#example').DataTable( {
-                                                    dom: 'Bfrtip',
-                                                    buttons: [
-                                                        'copy', 'csv', 'excel', 'pdf', 'print'
-                                                    ]
-                                                } );
-                                            } );
-                                        </script>
                                     </div>
                                 </div>
                             </div>
@@ -174,5 +161,15 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                    'csv', 'excel', 'pdf', 'print'
+            ]
+        } );
+    } );
+</script>
 @endsection
 
