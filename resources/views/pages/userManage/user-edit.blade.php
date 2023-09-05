@@ -92,12 +92,7 @@
                                           class="fadeIn form-control  @error('email') is-invalid @enderror"
                                           value="{{ $data->email }}" autocomplete="email" autofocus>
                                      </div>
-                                     <div class="my-3">
-                                        <input type="password" id="password" name="password" placeholder="password"
-                                          class="fadeIn form-control  @error('email') is-invalid @enderror"
-                                          value="{{ $data->password }}" autocomplete="password" autofocus>
-                                     </div>
-                                     <div class="my-3">
+                                    <div class="my-3">
                                         <input type="number" id="mobile" name="mobile" placeholder="mobile"
                                           class="fadeIn form-control  @error('email') is-invalid @enderror"
                                           value="{{ $data->mobile }}" autocomplete="mobile" autofocus>

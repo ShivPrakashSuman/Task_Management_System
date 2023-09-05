@@ -79,16 +79,15 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         $update = [
-            "name" => $request->name,
+            "name"=> $request->name,
             "username" => $request->username,
             "email" => $request->email,
-            "password" => $request->password,
             "mobile" => $request->mobile,
             "address" => $request->address,
             "image" => $request->image,
 
         ];
-        user::where('id', $id)->update($update);
+        User::where('id', $id)->update($update);
         Session::flash('info', 'Update SuccessFull!');
         return redirect ()->to('/user');
     }
@@ -100,6 +99,6 @@ class UserController extends Controller
     {
         User::destroy($id);
         Session::flash('error', 'Deleted ! ');
-        return redirect ()->to('/User');
+        return redirect ()->to('/user');
     }
 }
