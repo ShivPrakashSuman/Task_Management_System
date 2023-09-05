@@ -30,7 +30,7 @@ class UserController extends Controller
             'password' => ['required', 'string', 'min:4'],
             'mobile' => ['required', 'string'],
             'address' => ['required', 'string'],
-            'image' => ['required','string']
+            'image' => ['required','image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']
         ]);
     }
     public function store(Request $request)
@@ -38,14 +38,10 @@ class UserController extends Controller
         $validator = $this->validator($request->all());
         if($validator->fails()){
             return redirect('/user/create')->withErrors($validator)->withInput();
-        }
-       // dd('$fileName',$request->image, $request->file('image'));
-
-        if(!$request->file()) {
-            $imgname = rand(1000,100000).$request->image;
-            $request['image']->storeAs('/public/folder/',$imgname);
-            // $fileName = time().'_'.$request->image->getClientOriginalName();
-            // $filePath = $request->file('image')->storeAs('uploads/users', $fileName, 'public');
+        }   
+        if($request->file()) {
+            $fileName = time().'_'.$request->image->getClientOriginalName();
+            $filePath = $request->file('image')->storeAs('images/users', $fileName, 'public');
         }
         $id = auth()->User()->id;
         $data = array(
@@ -56,9 +52,8 @@ class UserController extends Controller
             "password" => $request['password'],
             "mobile" => $request['mobile'],
             "address" => $request['address'],
-            "image" => $imgname
+            "image" => $fileName
         );
-        dd($data);
         $result = User::create($data);
         Session::flash('success', 'Data SuccessFully');
         return redirect()->back();
@@ -72,13 +67,17 @@ class UserController extends Controller
 
     public function update(Request $request, string $id)
     {
+        if($request->file()) {
+            $fileName = time().'_'.$request->image->getClientOriginalName();
+            $filePath = $request->file('image')->storeAs('images/users', $fileName, 'public');
+        }
         $update = [
             "name"=> $request->name,
             "username" => $request->username,
             "email" => $request->email,
             "mobile" => $request->mobile,
             "address" => $request->address,
-            "image" => $request->image,
+            "image" => $fileName,
         ];
         User::where('id', $id)->update($update);
         Session::flash('info', 'Update SuccessFull!');

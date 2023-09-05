@@ -172,8 +172,8 @@
                                                     </td>
                                                 </tr>
                                                 @endforeach
-                                                @if(!$taskList)
-                                                    <tr><td colspan="6" class="text-center text-danger">Record Not Found</td></tr>
+                                                @if($taskList)
+                                                    <tr><td colspan="7" class="text-center text-danger">Record Not Found</td></tr>
                                                 @endif
                                             </tbody>
                                         </table>

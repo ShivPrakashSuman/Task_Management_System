@@ -74,7 +74,7 @@
                         <div class="row justify-content-center">
                             <div id="formContent" class="shadow bg-white rounded-3 text-center mt-5">
                                 <h1 class="mt-5">UserUpdate Form</h1>
-                                <form action="{{ route('user.update',$data->id) }}" method="post">
+                                <form action="{{ route('user.update',$data->id) }}" method="post"enctype="multipart/form-data">
                                    @csrf
                                    @method('PUT')
                                    <div class="my-4">
@@ -102,9 +102,9 @@
                                         autocomplete="address" autofocus>{{ $data->address }}</textarea>
                                      </div>
                                      <div class="my-3">
-                                        <input type="file" id="image" name="image" placeholder="image"
-                                          class="fadeIn form-control  @error('image') is-invalid @enderror"
-                                          value="{{ $data->image }}" autocomplete="image" autofocus>
+                                        <input type="file" id="image" name="image" placeholder="image" style="width: 80%;"
+                                          class="fadeIn form-control  @error('image') is-invalid @enderror" autocomplete="image" autofocus>
+                                          <span><img src="{{asset('storage/images/users/'.$data->image)}}" class="img-fluid" alt="team image" width="38" style='height: 45px;'></span>
                                      </div>
                                         <a href="/user" class="btn btn-info my-4 mx-3 backBtn">Back</a>
                                         <input type="submit" value="Submit" class="btn btn-info my-4"/>

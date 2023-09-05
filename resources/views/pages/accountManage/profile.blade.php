@@ -25,7 +25,11 @@
                                   <div class="card">
                                     <div class="card-body">
                                       <div class="d-flex flex-column align-items-center text-center">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                        @if($loginUser->image)
+                                          <img src="{{asset('storage/images/users/'.$loginUser->image)}}" alt="Admin" class="rounded-circle" width="150">
+                                        @else
+                                          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                        @endif
                                         <div class="mt-3">
                                           <h4>{{ $loginUser->name }}</h4>
                                           <p class="text-secondary mb-1">Full Stack Developer</p>

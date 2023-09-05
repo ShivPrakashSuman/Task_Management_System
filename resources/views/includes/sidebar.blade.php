@@ -29,15 +29,9 @@
                 <li class="my-3"><a href="{{ route('user.create') }}" class="rounded overFlowTex"><span class="icon-dash"></span> New Users Add</a></li>
             </ul>
         </div>
-        <a href="javascript:void(0)" title="Account" class="align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account" aria-expanded="false">
-            <li><i class="fa fa-user-circle-o me-3" aria-hidden="true"></i><span class="menu-text"> Account </span></li>
+        <a href="{{ route('account.index') }}"title="Account">
+            <li><i class="fa fa-user-circle-o me-3" aria-hidden="true"></i> Account </li>
         </a>
-        <div class="collapse mx-5" id="account" style="">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li class="my-3"><a href="{{ route('account.index') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Profile</a></li>
-                <li class="my-3"><a href="{{ route('task.create') }}" class="rounded overFlowTex"><span class="icon-dash"></span>Update</a></li>
-            </ul>
-        </div>
         <a href="javascript:void(0)" title="" class="align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#setting" aria-expanded="false">
             <li><i class="fa fa-cog me-3" aria-hidden="true"></i><span class="menu-text"> Setting </span></li>
         </a>
@@ -51,7 +45,11 @@
     <div class="logout">
         <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
-                <img src="{{asset('storage/images/download.png')}}" class="img-fluid rounded-5 mx-4 float-start" alt="team image" width="30">
+                @if(Auth::user()->image)
+                    <img src="{{asset('storage/images/users/'.Auth::user()->image)}}" alt="Admin" class="rounded-circle mx-4 float-start" width="30">
+                @else
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle mx-4 float-start" width="30">
+                @endif
                 <a id="navbarDropdown" class="p-1 nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }}
                 </a>

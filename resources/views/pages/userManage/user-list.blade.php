@@ -70,12 +70,12 @@
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>name</th>
-                                                    <th>username </th>
-                                                    <th>email</th>
-                                                    <th>mobile</th>
-                                                    <th>address</th>
-                                                    <th>image</th>
+                                                    <th>Name</th>
+                                                    <th>User Name </th>
+                                                    <th>Email</th>
+                                                    <th>Mobile</th>
+                                                    <th>Address</th>
+                                                    <th>Image</th>
                                                     <th class="th_action">Action</th>
                                                 </tr>
                                             </thead>
@@ -87,9 +87,16 @@
                                                     <td>{{ $row->username}}</td>
                                                     <td>{{ $row->email}}</td>
                                                     <td>{{ $row->mobile}}</td>
-                                                    <td>{{ $row->address}}</td>
-                                                    <td class="text-center"><img src="{{asset('storage/images/download.png')}}" class="img-fluid" alt="team image" width="30"></td>
-                                                      <td class="d-flex"><a href="javascritp:void(0)"data-bs-toggle="modal" data-bs-target="#myModal{{$row->id}}"><button class="btn fa fa-eye text-success" id="crection_btn"></button></a>
+                                                    <td>{{ $row->image}}</td>
+                                                    <td class="text-center p-1">
+                                                    @if($row->image)
+                                                        <img src="{{asset('storage/images/users/'.$row->image)}}" class="img-fluid" alt="team image" width="38" style='height: 45px;'>
+                                                    @else
+                                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-fluid" alt="team image" width="38" style='height: 45px;'>
+                                                    @endif
+                                                    </td>
+                                                    <td class="d-flex">
+                                                        <a href="javascritp:void(0)"data-bs-toggle="modal" data-bs-target="#myModal{{$row->id}}"><button class="btn fa fa-eye text-success" id="crection_btn"></button></a>
                                                         <a class="mx-1" href="{{ route('user.edit', $row->id) }}"><button class="btn fa fa-edit text-primary" id="crection_btn"></button></a>
                                                         <form action="{{ route('user.destroy', $row->id ) }}" method="post">
                                                             @csrf
@@ -99,6 +106,9 @@
                                                     </td>
                                                 </tr>
                                                 @endforeach
+                                                @if(!$userData)
+                                                    <tr><td colspan="8" class="text-center text-danger">Record Not Found</td></tr>
+                                                @endif
                                             </tbody>
                                         </table>
                                     </div>
@@ -142,9 +152,8 @@
                                 </tr>
                                 <tr>
                                     <th scope="col">image</th>
-                                    <td>{{ $row->image }}</td>
+                                    <td> <img src="{{asset('storage/images/users/'.$row->image)}}" class="img-fluid" alt="team image" width="38" style='height: 45px;'></td>
                                 </tr>
-
                             </thead>
                             </table>
                         </div>

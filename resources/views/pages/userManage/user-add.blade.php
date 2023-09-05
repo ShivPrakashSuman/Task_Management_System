@@ -74,29 +74,31 @@
                         <div class="row justify-content-center">
                             <div id="formContent" class="shadow bg-white rounded-3 text-center mt-5">
                                 <h1 class="mt-5">Create New User</h1>
-                                <form action="{{ route('user.store') }}" method="post">
+                                <form action="{{ route('user.store') }}" method="post" enctype="multipart/form-data">
                                      @csrf
                                     <div class="my-4">
-                                        <input type="text" id="name" name="name" placeholder="Full Name"class="fadeIn bnn form-control @error('name') is-invalid @enderror"
-                                        value="{{ old('name')}}" autocomplete="name" autofocus >
+                                        <input type="text" id="name" name="name" placeholder="Full Name"class="fadeIn form-control @error('name') is-invalid @enderror"
+                                        value="{{ old('name')}}" autocomplete="name" autofocus />
                                     </div>
                                     <div class="my-3">
                                         <input type="text" id="username" name="username"  placeholder="User Name"
-                                        class="fadeIn form-control  @error('username') is-invalid @enderror"value="{{ old('username') }}" autocomplete="username" autofocus >
+                                          class="fadeIn form-control  @error('username') is-invalid @enderror"
+                                          value="{{ old('username')}}" autocomplete="username" autofocus >
                                         @error('username')
                                             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                         @enderror
                                     </div>
                                     <div class="my-3">
-                                        <input type="email" id="email " name="email" placeholder="Your Email"
-                                        class="fadeIn form-control  @error('email') is-invalid @enderror"value="{{ old('email') }}" autocomplete="email" autofocus>
+                                        <input type="email" id="email" name="email" placeholder="Your Email"
+                                        class="fadeIn form-control  @error('email') is-invalid @enderror"
+                                        value="{{ old('email') }}" autocomplete="email" autofocus>
                                         @error('email')
                                             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                         @enderror
                                     </div>
                                     <div class="my-4">
                                         <input type="password" id="password" name="password" placeholder="Your Password"
-                                        class="fadeIn form-control  @error('password') is-invalid @enderror"value="{{ old('password') }}" autocomplete="password" autofocus>
+                                        class="fadeIn form-control  @error('password') is-invalid @enderror" value="{{ old('password') }}" autocomplete="password" autofocus>
                                         @error('password')
                                             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                         @enderror
@@ -108,7 +110,7 @@
                                     </div>
                                     <div class="my-4">
                                         <textarea type="text" id="address" name="address" placeholder="Your Address" 
-                                        class="fadeIn form-control  @error('address') is-invalid @enderror"autocomplete="address" autofocus>{{ old('address') }}</textarea>
+                                        class="fadeIn form-control  @error('address') is-invalid @enderror" autocomplete="address" autofocus>{{ old('address') }}</textarea>
                                     </div>
                                     <div class="my-4">
                                         <input type="file"  id="image" name="image" autocomplete="image" value="{{old('image')}}"

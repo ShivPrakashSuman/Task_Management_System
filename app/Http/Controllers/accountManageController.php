@@ -45,13 +45,17 @@ class accountManageController extends Controller
 
     public function update(Request $request, string $id)
     {
+        if($request->file()) {
+            $fileName = time().'_'.$request->image->getClientOriginalName();
+            $filePath = $request->file('image')->storeAs('images/users', $fileName, 'public');
+        }
         $update = [
             "name" => $request->name,
             "username" => $request->username,
             "email" => $request->email,
             "mobile" => $request->mobile,
             "address" => $request->address,
-            "image" => $request->image,
+            "image" => $fileName,
         ];
 
         User::where('id', $id)->update($update);
