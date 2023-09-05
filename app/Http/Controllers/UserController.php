@@ -46,7 +46,9 @@ class UserController extends Controller
             "name" => $request['name'],
             "username" => $request['username'],
             "email" => $request['email'],
+            "password" => $request['password'],
             "mobile" => $request['mobile'],
+            "address" => $request['address'],
             "image" => $request['image']
         );
         $result = User::create($data);
@@ -67,7 +69,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $data = User::find($id);
+        $data = user::find($id);
         return view('pages.userManage.user-edit')->with('data', $data);
     }
 
@@ -80,13 +82,15 @@ class UserController extends Controller
             "name" => $request->name,
             "username" => $request->username,
             "email" => $request->email,
+            "password" => $request->password,
             "mobile" => $request->mobile,
+            "address" => $request->address,
             "image" => $request->image,
 
         ];
-        User::where('id', $id)->update($update);
+        user::where('id', $id)->update($update);
         Session::flash('info', 'Update SuccessFull!');
-        return redirect ()->to('/User');
+        return redirect ()->to('/user');
     }
 
     /**

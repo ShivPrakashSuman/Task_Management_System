@@ -7,6 +7,8 @@
     input[type=number],
     input[type=email],
     input[type=password],
+    input[type=password],
+    input[type=file],
     textarea[type=text],
     select[type=select] {
         background-color: #f6f6f6;
@@ -72,7 +74,7 @@
                         <div class="row justify-content-center">
                             <div id="formContent" class="shadow bg-white rounded-3 text-center mt-5">
                                 <h1 class="mt-5">UserUpdate Form</h1>
-                                <form action="{{ route('User.update',$data->id) }}" method="post">
+                                <form action="{{ route('user.update',$data->id) }}" method="post">
                                    @csrf
                                    @method('PUT')
                                    <div class="my-4">
@@ -103,14 +105,14 @@
                                      <div class="my-3">
                                         <textarea type="text" id="image" name="address" placeholder="address"
                                           class="fadeIn form-control  @error('address') is-invalid @enderror"
-                                          value="{{ $data->address }}" autocomplete="address" autofocus><textarea>
+                                          value="{{ $data->address }}" autocomplete="address" autofocus></textarea>
                                      </div>
                                      <div class="my-3">
-                                        <textarea type="file" id="image" name="image" placeholder="image"
+                                        <input type="file" id="image" name="image" placeholder="image"
                                           class="fadeIn form-control  @error('image') is-invalid @enderror"
-                                          value="{{ $data->image }}" autocomplete="image" autofocus><textarea>
+                                          value="{{ $data->image }}" autocomplete="image" autofocus>
                                      </div>
-                                        <a href="/User" class="btn btn-info my-4 mx-3 backBtn">Back</a>
+                                        <a href="/user" class="btn btn-info my-4 mx-3 backBtn">Back</a>
                                         <input type="submit" value="Submit" class="btn btn-info my-4"/>
                                 </form>
                             </div>

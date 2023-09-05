@@ -74,12 +74,12 @@
                         <div class="row justify-content-center">
                             <div id="formContent" class="shadow bg-white rounded-3 text-center mt-5">
                                 <h1 class="mt-5">Create New User</h1>
-                                <form action="{{ route('task.store') }}" method="post">
+                                <form action="{{ route('user.store') }}" method="post">
                                      @csrf
                                     <div class="my-4">
                                         <input type="text" id="name" name="name" placeholder="name"
-                                        class="fadeIn bnn form-control @error('title') is-invalid @enderror"
-                                        value="{{ old('title')}}" autocomplete="name" autofocus >
+                                        class="fadeIn bnn form-control @error('name') is-invalid @enderror"
+                                        value="{{ old('name')}}" autocomplete="name" autofocus >
                                     </div>
                                     <div class="my-3">
                                         <input type="text" id="username" name="username"  placeholder="username"
@@ -111,7 +111,7 @@
                                         class="fadeIn form-control  @error('address') is-invalid @enderror"
                                         value="{{ old('image') }}" autocomplete="image" autofocus>
                                     </div>
-                                    <a href="/User" class="btn btn-info my-4 mx-3 backBtn">Back</a>
+                                    <a href="/user" class="btn btn-info my-4 mx-3 backBtn">Back</a>
                                     <input type="submit" value="Submit" class="btn btn-info my-4"/>
                                 </form>
                             </div>
