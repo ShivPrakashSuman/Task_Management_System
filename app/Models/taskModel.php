@@ -24,7 +24,11 @@ class taskModel extends Model
         'user_id',
         'title',
         'description',
+        'assign_id',
         'due_date',
         'status',
     ];
+    public function getUser() {
+        return $this->belongsTo('App\Models\User', 'assign_id');
+    }
 }

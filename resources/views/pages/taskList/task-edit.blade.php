@@ -81,6 +81,14 @@
                                           class="fadeIn form-control  @error('description') is-invalid @enderror"
                                           value="{{ $data->description }}" autocomplete="description" autofocus >
                                      </div>
+                                     <div class="my-3">
+                                        <select type="select" class="fadeIn form-select @error('assign_id') is-invalid @enderror" aria-label="Default select example"
+                                            id="assign_id" name="assign_id" autocomplete="assign_id" autofocus>
+                                            @foreach ($userData as $option)
+                                                <option value="{{$option->id}}" {{ $option->id == $data->assign_id ? 'selected' : '' }}>{{$option->name}}</option>
+                                            @endforeach
+                                        </select>
+                                     </div>                               
                                      <div class="my-4">
                                          <input type="date" id="due_date" name="due_date" placeholder="Due Date"
                                           class="fadeIn form-control  @error('due_date') is-invalid @enderror"
@@ -89,10 +97,10 @@
                                      <div class="my-3">
                                         <select type="select" class="fadeIn form-select @error('status') is-invalid @enderror" aria-label="Default select example"
                                             id="status" name="status" autocomplete="status" autofocus>
-                                            <option selected disabled hidden>{{ $data->status }}</option>
-                                            <option value="Holding">Holding</option>
-                                            <option value="Started">Started</option>
-                                            <option value="Finished">Finished</option>
+                                            <option value="" selected hidden>Status</option>
+                                            @foreach ($statusShow as $option)
+                                                <option value="{{$option}}" {{ $option == $data->status ? 'selected' : '' }}>{{$option}}</option>
+                                            @endforeach
                                         </select>
                                      </div>
                                         <a href="/task" class="btn btn-info my-4 mx-3 backBtn">Back</a>

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\taskModel;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+use App\Models\User;
+
 class taskController extends Controller
 {
     public function index()
@@ -15,7 +17,7 @@ class taskController extends Controller
         $inprogress_task_list = taskModel::where('user_id','=',$id)->Where('status','=','in_progress')->get();
         $on_approval_task_list = taskModel::where('user_id','=',$id)->Where('status','=','on_approval')->get();
         $done_task_list = taskModel::where('user_id','=',$id)->Where('status','=','done')->get();
-        $all_task_list = taskModel::all();
+        $all_task_list = taskModel::with('getUser')->get();
 
         return view('pages.taskList.task-list')
             ->with('taskList', $all_task_list)
@@ -45,7 +47,8 @@ class taskController extends Controller
 
     public function create()
     {
-        return view('pages.taskList.task-add');
+        $data = User::all();
+        return view('pages.taskList.task-add')->with('userData', $data);
     }
 
     public function store(Request $request)
@@ -53,6 +56,7 @@ class taskController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
+            'assign_id' => 'required',
             'due_date' => 'required',
             'status' => 'required'
         ]);
@@ -61,6 +65,7 @@ class taskController extends Controller
             "user_id"=>$id,
             "title" => $request['title'],
             "description" => $request['description'],
+            "assign_id" => $request['assign_id'],
             "due_date" => $request['due_date'],
             "status" => $request['status']
         );
@@ -72,7 +77,12 @@ class taskController extends Controller
     public function edit(string $id)
     {
         $data = taskModel::find($id);
-        return view('pages.taskList.task-edit')->with('data', $data);
+        $userData = User::all();
+        $status = ['to_do', 'in_progress', 'on_approval', 'done'];
+        return view('pages.taskList.task-edit')
+            ->with('data', $data)
+            ->with('userData', $userData)
+            ->with('statusShow', $status);
     }
 
     public function update(Request $request, string $id)
@@ -80,6 +90,7 @@ class taskController extends Controller
         $update = [
             "title" => $request->title,
             "description" => $request->description,
+            "assign_id" => $request->assign_id,
             "due_date" => $request->due_date,
             "status" => $request->status,
         ];

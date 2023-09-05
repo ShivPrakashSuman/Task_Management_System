@@ -82,11 +82,12 @@
                                         value="{{ old('description') }}" autocomplete="description" autofocus >
                                     </div>
                                     <div class="my-3">
-                                    <select type="select" class="fadeIn form-select @error('status') is-invalid @enderror" aria-label="Default select example" 
-                                        id="status" name="status" autocomplete="status" autofocus>
+                                    <select type="select" class="fadeIn form-select @error('assign_id') is-invalid @enderror" aria-label="Default select example" 
+                                        id="assign_id" name="assign_id" autocomplete="assign_id" autofocus>
                                         <option value="" selected hidden>Task Assign</option>
-                                        <option value="user" >Kuldeep</option>
-                                        <option value="user" >sager</option>
+                                        @foreach ($userData as $option)
+                                            <option value="{{$option->id}}" {{ $option->id == old('assign_id')? 'selected':'' }}>{{$option->name}}</option>
+                                        @endforeach
                                     </select>
                                     </div>
                                     <div class="my-4">

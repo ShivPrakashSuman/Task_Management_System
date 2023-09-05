@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('user_id');
             $table->string('title');
             $table->text('description');
+            $table->string('assign_id')->nullable();
             $table->string('due_date')->nullable();
             $table->string('status')->nullable();
             $table->softDeletes();

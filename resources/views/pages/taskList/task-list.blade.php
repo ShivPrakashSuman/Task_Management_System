@@ -137,6 +137,7 @@
                                                 <tr>
                                                     <th>Id</th>
                                                     <th>Title</th>
+                                                    <th>Assign User</th>
                                                     <th>Description</th>
                                                     <th>Due Date</th>
                                                     <th>Status </th>
@@ -148,6 +149,7 @@
                                                 <tr>
                                                     <td>{{$count+1}}</td>
                                                     <td class="text-primary">{{ $row->title}}</td>
+                                                    <td class="text-primary"> {{ $row->getUser->name }}</td>
                                                     <td>{{ $row->description}}</td>
                                                     <td>{{ $row->due_date}}</td>
                                                     @if($row->status == 'to_do')
@@ -171,7 +173,7 @@
                                                 </tr>
                                                 @endforeach
                                                 @if(!$taskList)
-                                                    <tr><td colspan="10" class="text-center text-danger">Record Not Found</td></tr>
+                                                    <tr><td colspan="6" class="text-center text-danger">Record Not Found</td></tr>
                                                 @endif
                                             </tbody>
                                         </table>
@@ -194,7 +196,11 @@
                         </div>
                         <div class="modal-body">
                             <table class="table table-hover">
-                            <thead>
+                            <thead> 
+                                <tr>
+                                    <th scope="col">Assign User Name</th>
+                                    <td class="text-primary"> {{ $row->getUser->name }}</td>
+                                </tr>
                                 <tr>
                                     <th scope="col">Description</th>
                                     <td>{{ $row->description }}</td>
@@ -276,7 +282,7 @@
             data: '',
             success: function (data){ 
                 let resp = JSON.parse(data);
-                console.log('data=', resp );  
+                window.location.reload(true);
             }
         });
     }
