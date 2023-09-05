@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\accountManageController;
 use App\Http\Controllers\taskController;
+use App\Http\Controllers\UserController;
+/*
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,4 +37,5 @@ use App\Http\Controllers\taskController;
 
     //seeting
     Route::resource('setting','App\Http\Controllers\settingController')->middleware('auth');
-
+  // User
+    Route::resource('User','App\Http\Controllers\UserController')->middleware('auth');

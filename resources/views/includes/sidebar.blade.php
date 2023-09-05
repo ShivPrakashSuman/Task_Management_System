@@ -25,8 +25,8 @@
         </a>
         <div class="collapse mx-5" id="todo" style="">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li class="my-3"><a href="#" class="rounded overFlowTex"><span class="icon-dash"></span> Employee List</a></li>
-                <li class="my-3"><a href="#" class="rounded overFlowTex"><span class="icon-dash"></span> New Employee Add</a></li>
+                <li class="my-3"><a href="{{ route('User.index') }} class="rounded overFlowTex"><span class="icon-dash"></span> Employee List</a></li>
+                <li class="my-3"><<a href="{{ route('User.create') }}" class="rounded overFlowTex"><span class="icon-dash"></span> New Employee Add</a></li>
             </ul>
         </div>
         <a href="javascript:void(0)" title="Account" class="align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account" aria-expanded="false">
