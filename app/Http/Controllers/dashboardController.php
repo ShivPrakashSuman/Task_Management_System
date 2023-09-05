@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\taskModel;
 
@@ -15,9 +15,12 @@ class dashboardController extends Controller
 
     public function index()
     {
-        $id = auth()->User()->id;
-        $taskAll = taskModel::where('user_id','=',$id)->get();
-        return view('pages.dashboard')->with('taskData', $taskAll);
+         $userData = User::count();
+        return view('pages.dashboard', compact('userData'));
+
+        // $id = auth()->User()->id;
+        // $taskAll = taskModel::where('user_id','=',$id)->get();
+        // return view('pages.dashboard')->with('taskData', $taskAll);
     }
 
     /**
