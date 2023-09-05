@@ -209,10 +209,10 @@ box-shadow: 0 4px 8px 0 rgba(21, 21, 21, .2);
 
 .input-icon {
 position: absolute;
-top: 0;
+top: 10px;
 left: 18px;
 height: 48px;
-font-size: 24px;
+font-size: 24px !important;
 line-height: 48px;
 text-align: left;
 color: #ffeba7;
