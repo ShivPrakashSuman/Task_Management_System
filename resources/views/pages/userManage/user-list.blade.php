@@ -87,7 +87,7 @@
                                                     <td>{{ $row->username}}</td>
                                                     <td>{{ $row->email}}</td>
                                                     <td>{{ $row->mobile}}</td>
-                                                    <td>{{ $row->image}}</td>
+                                                    <td>{{ $row->address}}</td>
                                                     <td class="text-center p-1">
                                                     @if($row->image)
                                                         <img src="{{asset('storage/images/users/'.$row->image)}}" class="img-fluid" alt="team image" width="38" style='height: 45px;'>
