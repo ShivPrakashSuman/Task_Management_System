@@ -67,7 +67,7 @@
                                 <div class="bg-white rounded-3 shadow dbox bbox1">
                                     <i class="fa fa-tasks" aria-hidden="true"></i>
                                     <p class="m-0 pt-3">Task</p>
-                                    {{-- <h4>{{$user}}</h4> --}}
+                                    <h4>{{$userData}}</h4>
                                     <div class="border-top border-1 mt-4">
                                         <p class="p-2"><i class="fa fa-exclamation-triangle text-danger mx-2" aria-hidden="true"></i>Get more space</p>
                                     </div>

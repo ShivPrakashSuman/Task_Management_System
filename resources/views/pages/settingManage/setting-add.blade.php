@@ -73,8 +73,8 @@
                                 <form action="{{ route('setting.store') }}" method="post" enctype="multipart/form-data">
                                      @csrf
                                      <div class="my-3">
-                                        <select type="select" class="fadeIn form-select @error('status') is-invalid @enderror" aria-label="Default select example"
-                                            id="status" name="status" autocomplete="status" autofocus>
+                                        <select type="select" class="fadeIn form-select @error('type') is-invalid @enderror" aria-label="Default select example"
+                                            id="type" name="type" autocomplete="status" autofocus>
                                             <option selected disabled hidden>Open this select Type</option>
                                             <option value="text">text</option>
                                             <option value="number">number</option>

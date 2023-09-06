@@ -7,6 +7,7 @@
     input[type=password],
     input[type=date],
     input[type=number],
+    input[type=file],
     textarea[type=text],
     select[type=select] {
         background-color: #f6f6f6;
@@ -72,7 +73,7 @@
                         <div class="row justify-content-center">
                             <div id="formContent" class="shadow bg-white rounded-3 text-center mt-5">
                                 <h1 class="mt-5">Task Update Form</h1>
-                                <form action="{{ route('account.update',$loginUser->id) }}" method="post">
+                                <form action="{{ route('account.update',$loginUser->id) }}" method="post" enctype="multipart/form-data">
                                    @csrf
                                    @method('PUT')
                                     <div class="my-4">
@@ -105,6 +106,11 @@
                                          class="fadeIn form-control  @error('address') is-invalid @enderror">
                                          {{ $loginUser->address }} </textarea>
                                     </div>
+                                    <div class="my-3">
+                                        <input type="file" id="image" name="image" placeholder="image" style="width: 80%;"
+                                          class="fadeIn form-control  @error('image') is-invalid @enderror" autocomplete="image" autofocus>
+                                          <span><img src="{{asset('storage/images/users/'.$loginUser->image)}}" class="img-fluid" alt="team image" width="38" style='height: 45px;'></span>
+                                     </div>
                                     <div class="my-3">
                                     </div>
                                         <a href="/account" class="btn btn-info my-4 mx-3 backBtn">Back</a>
