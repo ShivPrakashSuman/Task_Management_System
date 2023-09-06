@@ -15,7 +15,7 @@
                     <div class="card-3d-wrapper">
                         <div class="card-front">
                             <div class="center-wrap">
-                                <form method="POST" action="{{ route('password.email') }}">
+                                <form method="POST" action="{{ route('forget.password.post') }}">
                                     @csrf
                                     <div class="section text-center">
                                         <h4 class="mb-4 pb-3">{{ __('Reset Password') }}</h4>
