@@ -1,4 +1,8 @@
-
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+</head>
 <style>
     #formContent {
         max-width: 80%;
@@ -77,12 +81,12 @@
                                         value="{{ old('title')}}" autocomplete="title" autofocus >
                                     </div>
                                     <div class="my-3">
-                                        <input type="text" id="description" name="description"  placeholder="Description"
+                                        <input type="text" id="description" name="description" id="#edito" placeholder="Description"
                                         class="fadeIn form-control  @error('description') is-invalid @enderror"
                                         value="{{ old('description') }}" autocomplete="description" autofocus >
                                     </div>
                                     <div class="my-3">
-                                    <select type="select" class="fadeIn form-select @error('assign_id') is-invalid @enderror" aria-label="Default select example" 
+                                    <select type="select" class="fadeIn form-select @error('assign_id') is-invalid @enderror" aria-label="Default select example"
                                         id="assign_id" name="assign_id" autocomplete="assign_id" autofocus>
                                         <option value="" selected hidden>Task Assign</option>
                                         @foreach ($userData as $option)
@@ -96,7 +100,7 @@
                                         value="{{ old('date') }}" autocomplete="date" autofocus>
                                     </div>
                                     <div class="my-3">
-                                    <select type="select" class="fadeIn form-select @error('status') is-invalid @enderror" aria-label="Default select example" 
+                                    <select type="select" class="fadeIn form-select @error('status') is-invalid @enderror" aria-label="Default select example"
                                         id="status" name="status" autocomplete="status" autofocus>
                                         <option value="to_do" selected>To Do</option>
                                     </select>
@@ -113,4 +117,35 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('editor1', {
+      // Define the toolbar groups as it is a more accessible solution.
+      toolbarGroups: [{
+          "name": "basicstyles",
+          "groups": ["basicstyles"]
+        },
+        {
+          "name": "paragraph",
+          "groups": ["list", "blocks"]
+        },
+        {
+          "name": "document",
+          "groups": ["mode"]
+        },
+        {
+          "name": "insert",
+          "groups": ["insert"]
+        },
+        {
+          "name": "styles",
+          "groups": ["styles"]
+        },
+        {
+          "name": "about",
+          "groups": ["about"]
+        }
+      ]
+    });
+  </script>
 @endsection
