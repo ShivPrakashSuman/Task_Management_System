@@ -71,7 +71,7 @@
                                                     </td>
                                                 </tr>
                                                 @endforeach
-                                                @if(!$data == [])
+                                                @if(!$data)
                                                     <tr><td colspan="5" class="text-center text-danger">Record Not Found</td></tr>
                                                 @endif
                                             </tbody>

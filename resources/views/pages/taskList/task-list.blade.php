@@ -172,7 +172,7 @@
                                                     </td>
                                                 </tr>
                                                 @endforeach
-                                                @if($taskList)
+                                                @if(count($taskList) == 0)
                                                     <tr><td colspan="7" class="text-center text-danger">Record Not Found</td></tr>
                                                 @endif
                                             </tbody>

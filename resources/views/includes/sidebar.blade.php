@@ -2,13 +2,10 @@
 <div class="col-2 bg-white sidebar p-0">
     <div class="side-header">
         <div class="row">
-            <div class="col-md-4">
-                <span><i class="fa fa-play bg-primary rounded-5 text-white" aria-hidden="true"></i></span>
+            <div class="col-md-10 p-0">
+                <span class="website-title"><strong>Task Quantam</strong></span>
             </div>
-            <div class="col-md-4 mt-2">
-                <span class=""><b>3:20:00</b></span>
-            </div>
-            <div class="col-md-4 text-end pe-3">
+            <div class="col-md-2 text-end pe-3">
                 <span><i class="fa fa-chevron-left mt-2 pt-1"></i></span>
             </div>
         </div>
@@ -20,15 +17,9 @@
         <a href="{{ route('task.index') }}" title="Task">
             <li><i class="fa fa-tasks me-3" aria-hidden="true"></i>Task </li>
         </a>
-        <a href="javascript:void(0)" title="" class="align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#todo" aria-expanded="false">
-            <li><i class="fa fa-list-alt me-3" aria-hidden="true"></i><span class="menu-text"> Users </span></li>
+        <a href="{{ route('user.index') }}" title="Users">
+            <li><i class="fa fa-list-alt me-3" aria-hidden="true"></i>Users </li>
         </a>
-        <div class="collapse mx-5" id="todo" style="">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li class="my-3"><a href="{{ route('user.index') }}" class="rounded overFlowTex"><span class="icon-dash"></span> Users List</a></li>
-                <li class="my-3"><a href="{{ route('user.create') }}" class="rounded overFlowTex"><span class="icon-dash"></span> New Users Add</a></li>
-            </ul>
-        </div>
         <a href="{{ route('account.index') }}"title="Account">
             <li><i class="fa fa-user-circle-o me-3" aria-hidden="true"></i> Account </li>
         </a>

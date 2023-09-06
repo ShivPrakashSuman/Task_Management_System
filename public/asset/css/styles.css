@@ -479,3 +479,11 @@ color:#8be5a6;
 .box4 > h5{
 color:#dda8d1;
 }
+
+.website-title{
+    float: left;
+    font-size: 25px;
+    color: #11a1fd;
+    margin-left: 28px;
+    font-weight: 800;
+}
