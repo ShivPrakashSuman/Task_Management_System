@@ -81,7 +81,7 @@
                                 <h5 class="pt-1 ps-1">To do</h5>
                                 @foreach ($todo_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
-                                    <h5 class="pt-1 ps-3"><b>{{ $row->title }}</b></h5>
+                                    <h5 class="pt-1 ps-3"><div class="overflow-single-row"><b>{{ $row->title }}</b></div></h5>
                                     <a href=""><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
                                     <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
                                 </div>
@@ -105,7 +105,7 @@
                                 <h5 class="pt-1 ps-4">On approval</h5>
                                 @foreach ($on_approval_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
-                                    <h5 class="pt-1 ps-3"><b>{{ $row->title }}</b></h5>
+                                    <h5 class="pt-1 ps-3"><div class="overflow-single-row"><b>{{ $row->title }}</b></div></h5>
                                     <a href="#"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
                                     <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
                                 </div>
@@ -117,7 +117,7 @@
                                 <h5 class="pt-1 ps-4">Done</h5>
                                 @foreach ($done_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
-                                    <h5 class="pt-1 ps-3"><b>{{ $row->title }}</b></h5>
+                                    <h5 class="pt-1 ps-3"><div class="overflow-single-row"><b>{{ $row->title }}</b></div></h5>
                                     <a href="#"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
                                     <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
                                 </div>
@@ -193,7 +193,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title text">{{ $row->title }}</h4>
+                            <h4 class="modal-title text"><div class="overflow-single-row">{{ $row->title }}</div></h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -214,13 +214,13 @@
                                 <tr>
                                     <th scope="col">Quantity</th>
                                     @if($row->status == 'to_do')
-                                        <td><span class="badge bg-warning rounded-4 px-3 py-2 shadow"> To Do <span></td>
+                                        <td><span class="bg-warning rounded-4 px-3 py-2 shadow"> To Do <span></td>
                                     @elseif ($row->status == 'in_progress')
-                                        <td><span class="badge bg-primary rounded-4 px-3 py-2 shadow"> In Progress <span></td>
+                                        <td><span class="bg-primary rounded-4 px-3 py-2 shadow"> In Progress <span></td>
                                     @elseif ($row->status == 'on_approval')
-                                        <td><span class="badge bg-success rounded-4 px-3 py-2 shadow"> On Approval <span></td>
+                                        <td><span class="bg-success rounded-4 px-3 py-2 shadow"> On Approval <span></td>
                                     @else
-                                        <td><span class="badge bg-danger rounded-4 px-3 py-2 shadow"> Done <span></td>
+                                        <td><span class="bg-danger rounded-4 px-3 py-2 shadow"> Done <span></td>
                                     @endif
                                 </tr>
                             </thead>

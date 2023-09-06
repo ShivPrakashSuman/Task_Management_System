@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <html lang="en">
 <style>
     label{
@@ -47,9 +48,49 @@
                         <label class="">status:</label>
                         <span class="text-primary">{{ $task->Status }}</span>
                     </div>
+=======
+
+<style>
+    
+</style>
+@extends('layouts.app')
+
+@section('content')
+<div class="container-fluid p-0">
+    <div class="row m-0 maincont">
+        <!-- sidebar content -->
+
+            @include('includes.sidebar')
+
+        <!-- main content -->
+        <div class="col-10 bg-white main-content p-0">
+             <!-- navbar content -->
+
+                @include('includes.navbar')
+
+            <!-- end navbar content -->
+            <div class="m-4">
+                <div class="row m-0">
+                    <!--   Change content  -->
+
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div id="formContent" class="shadow bg-white rounded-3 text-center mt-5">
+                                <h1 class="mt-5">Create New Task</h1>
+                                
+                            </div>
+                        </div>
+                    </div>
+                     <!--  end Change content  -->
+>>>>>>> Stashed changes
                 </div>
             </div>
         </div>
     </div>
+<<<<<<< Updated upstream
 </body>
 </html>
+=======
+</div>
+@endsection
+>>>>>>> Stashed changes
