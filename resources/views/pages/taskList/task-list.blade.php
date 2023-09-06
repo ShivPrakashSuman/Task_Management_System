@@ -1,4 +1,7 @@
+<head>
 
+
+</head>
 @extends('layouts.app')
 
 @section('content')
@@ -45,7 +48,7 @@
                                 <h5>Task List</h5>
                             </div>
                             <div class="">
-                                <button class="btn btn-primary liststatus_btn" onclick="list_dashboard()" id="status" value="true"><i class="fa fa-edit"></i>click</button>
+                               <button class="btn btn-primary liststatus_btn" onclick="list_dashboard()"id="status" value="true"><i class="fa fa-edit"></i>click</button>
                             </div>
                         </div>
                     <div class="col-md-4 mt-1">
@@ -125,12 +128,11 @@
                     <!-- Dashborad Status Start  -->
 
                     <!-- Task list Start  -->
-                    <div class="container" id="list">
+                    <div class="container" id="list" id="Task-list">
                         <div class="row justify-content-center">
                             <div class=""style="border: antiquewhite;">
                                 <div class="row">
-                                    
-                                    <hr class="my-2">
+                                <hr class="my-2">
                                     <div class="">
                                         <table class="table" >
                                             <thead>
@@ -196,7 +198,7 @@
                         </div>
                         <div class="modal-body">
                             <table class="table table-hover">
-                            <thead> 
+                            <thead>
                                 <tr>
                                     <th scope="col">Assign User Name</th>
                                     <td class="text-primary"> {{ $row->getUser->name }}</td>
@@ -228,7 +230,7 @@
                             <a href="{{ route('task.edit', $row->id) }}" type="button" class="btn backBtn" >Update</a>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
-                        </div>    
+                        </div>
                     </div>
                 </div>
                 </div>
@@ -238,18 +240,31 @@
 </div>
 @endsection
 <script>
- 
+
     function list_dashboard(){
         if(document.getElementById("status").value == 'false'){
-            document.getElementById("statusDashborad").style.display = "contents";
-            document.getElementById("list").style.display = "none";
+            localStorage.setItem('Dashborad','contents');
+            localStorage.setItem('lit','none');
+            setValue();
             document.getElementById("status").value = 'true';
         } else {
-            document.getElementById("statusDashborad").style.display = "none";
-            document.getElementById("list").style.display = "initial";
+            localStorage.setItem('Dashborad','none');
+            localStorage.setItem('lit','initial');
+            setValue();
             document.getElementById("status").value = 'false';
         }
     }
+    setValue();
+	 function setValue(){
+
+	    if(localStorage.getItem('lit')){
+		 let text = localStorage.getItem('Dashborad');
+         let text1 = localStorage.getItem('lit');
+         document.getElementById("statusDashborad").style.display = text;
+         document.getElementById("list").style.display = text1;
+         console.log(text);
+		}
+	 }
 
     function dragstart_handler(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
@@ -258,11 +273,11 @@
     function dragover_handler(ev) {
         ev.currentTarget.style.background = "";
         ev.preventDefault();
-    }    
+    }
     function drop_handler(ev) {
         ev.preventDefault();
         var id = ev.dataTransfer.getData("text");
-        var ele = document.getElementById(id); 
+        var ele = document.getElementById(id);
         var ids = ["to_do","in_progress","on_approval","done"]
         if (id == ele.id && ids.includes(ev.target.id) > -1){
             ev.target.appendChild(document.getElementById(id));
@@ -280,10 +295,11 @@
             type:'GET',
             url: `/changeStatus?task_id=${task_id}&field_id=${field_id}`,
             data: '',
-            success: function (data){ 
+            success: function (data){
                 let resp = JSON.parse(data);
                 window.location.reload(true);
             }
         });
     }
+
 </script>
