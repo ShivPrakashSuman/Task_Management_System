@@ -44,18 +44,18 @@
                 <div class="row m-0">
                     <!--   Change content  -->
                     <div class="d-flex justify-content-between ">
-                            <div class="">
-                                <h5>Task List</h5>
-                            </div>
-                            <div class="">
-                               <button class="btn btn-primary liststatus_btn" onclick="list_dashboard()"id="status" value="true"><i class="fa fa-edit"></i>click</button>
-                            </div>
+                        <div class="">
+                            <h5>Task List</h5>
                         </div>
+                        <div class="">
+                            <button class="btn btn-primary liststatus_btn" onclick="list_dashboard()"id="status" value="true"><i class="fa fa-edit"></i>click</button>
+                        </div>
+                    </div>
                     <div class="col-md-4 mt-1">
                         <div class="box rounded-4">
                             <h5 class="pt-4 ps-4">Participants</h5>
                             <img class="img-fluid ps-3 pt-2 pb-5" src="{{asset('storage/images/team.jpg')}}" style="mix-blend-mode:darken" alt="team image" width="270">
-                            <i class="fa fa-plus bg-white rounded-5 p-1 mt-1" aria-hidden="true"></i>
+                            <a href="{{ route('task.create') }}" class="bg-white rounded-5 mb-7" style="margin-left: 150px;"><i class="fa fa-plus p-1 " aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="col-md-4 mt-1">
@@ -82,8 +82,8 @@
                                 @foreach ($todo_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
                                     <h5 class="pt-1 ps-3"><div class="overflow-single-row"><b>{{ $row->title }}</b></div></h5>
-                                    <a href=""><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
-                                    <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
+                                    <a href="{{ route('task.show', $row->id) }}"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
+                                    <p class="ps-3 text-muted">{{ $row->due_date }} <img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20" /> </p>
                                 </div>
                                 @endforeach
                             </div>
@@ -94,8 +94,8 @@
                                 @foreach ($inprogress_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
                                     <h5 class="pt-1 ps-3"><div class="overflow-single-row"><b>{{ $row->title }}</b></div></h5>
-                                    <a href="#"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
-                                    <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
+                                    <a href="{{ route('task.show', $row->id) }}"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
+                                    <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20" /> </p>
                                 </div>
                                 @endforeach
                             </div>
@@ -106,8 +106,8 @@
                                 @foreach ($on_approval_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
                                     <h5 class="pt-1 ps-3"><div class="overflow-single-row"><b>{{ $row->title }}</b></div></h5>
-                                    <a href="#"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
-                                    <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
+                                    <a href="{{ route('task.show', $row->id) }}"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
+                                    <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20" /> </p>
                                 </div>
                                 @endforeach
                             </div>
@@ -118,8 +118,8 @@
                                 @foreach ($done_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
                                     <h5 class="pt-1 ps-3"><div class="overflow-single-row"><b>{{ $row->title }}</b></div></h5>
-                                    <a href="#"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
-                                    <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
+                                    <a href="{{ route('task.show', $row->id) }}"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
+                                    <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20" /> </p>
                                 </div>
                                 @endforeach
                             </div>
@@ -164,8 +164,8 @@
                                                         <td><span class="badge bg-danger rounded-4 px-3 py-2 shadow"> Done <span></td>
                                                     @endif
                                                     <td class="d-flex">
-                                                        <a href="javascritp:void(0)"data-bs-toggle="modal" data-bs-target="#myModal{{$row->id}}"><button class=" m-1 btn fa fa-eye text-success"></button></a>
-                                                        <a class="m-1" href="{{ route('task.edit', $row->id) }}" ><button class="btn fa fa-edit text-primary"></button></a>
+                                                        <a href="{{ route('task.show', $row->id) }}"><button class=" m-1 btn fa fa-eye text-success"></button></a>
+                                                        <a class="m-1" href="{{ route('task.edit', $row->id) }}"><button class="btn fa fa-edit text-primary"></button></a>
                                                         <form action="{{ route('task.destroy', $row->id ) }}" method="post" class="m-1">
                                                             @csrf
                                                             @method('DELETE')

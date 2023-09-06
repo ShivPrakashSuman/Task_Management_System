@@ -105,10 +105,11 @@ class taskController extends Controller
         Session::flash('error', 'Deleted ! ');
         return redirect ()->to('/task');
     }
+
     public function show(string $id)
     {
-        $taskModel = taskModel::find($id);
-        return view('task.show', compact('task'));
+        $getTask = taskModel::with('getUser')->find($id);
+        return view('pages.taskList.task-view')->with('taskGet', $getTask);
     }
 
 }
