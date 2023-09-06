@@ -76,13 +76,13 @@
                                         <select type="select" class="fadeIn form-select @error('type') is-invalid @enderror" aria-label="Default select example"
                                             id="type" name="type" autocomplete="status" autofocus>
                                             <option selected disabled hidden>Open this select Type</option>
-                                            <option value="text">text</option>
-                                            <option value="number">number</option>
-                                            <option value="iamge">iamge</option>
+                                            <option value="text">Text</option>
+                                            <option value="number">Number</option>
+                                            <option value="iamge">Image</option>
                                         </select>
                                      </div>
                                      <div class="my-4">
-                                        <input type="text" id="key" name="key" placeholder="key"
+                                        <input type="text" id="key" name="key" placeholder="Key"
                                          class="fadeIn bnn form-control @error('key') is-invalid @enderror"
                                          value="{{ old('key')}}" autocomplete="key" autofocus >
                                     </div>
