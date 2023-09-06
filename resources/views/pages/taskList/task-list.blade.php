@@ -82,7 +82,7 @@
                                 @foreach ($todo_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
                                     <h5 class="pt-1 ps-3"><b>{{ $row->title }}</b></h5>
-                                    <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
+                                    <a href=""><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
                                     <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
                                 </div>
                                 @endforeach
@@ -93,8 +93,8 @@
                                 <h5 class="pt-1 ps-4">In progress</h5>
                                 @foreach ($inprogress_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
-                                    <h5 class="pt-1 ps-3"><b>{{ $row->title }}</b></h5>
-                                    <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
+                                    <h5 class="pt-1 ps-3"><div class="overflow-single-row"><b>{{ $row->title }}</b></div></h5>
+                                    <a href="#"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
                                     <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
                                 </div>
                                 @endforeach
@@ -106,7 +106,7 @@
                                 @foreach ($on_approval_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
                                     <h5 class="pt-1 ps-3"><b>{{ $row->title }}</b></h5>
-                                    <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
+                                    <a href="#"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
                                     <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
                                 </div>
                                 @endforeach
@@ -118,7 +118,7 @@
                                 @foreach ($done_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
                                     <h5 class="pt-1 ps-3"><b>{{ $row->title }}</b></h5>
-                                    <button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">primary</button>
+                                    <a href="#"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
                                     <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20"> </p>
                                 </div>
                                 @endforeach
@@ -150,9 +150,9 @@
                                                 @foreach ($taskList as $count => $row)
                                                 <tr>
                                                     <td>{{$count+1}}</td>
-                                                    <td class="text-primary">{{ $row->title}}</td>
+                                                    <td class="text-primary"><div class="overflow-single-row">{{ $row->title}}</div></td>
                                                     <td class="text-primary"> {{ $row->getUser->name }}</td>
-                                                    <td>{{ $row->description}}</td>
+                                                    <td style="max-width: 350px;"><div class="overflow"> {{ $row->description}} </div></td>
                                                     <td>{{ $row->due_date}}</td>
                                                     @if($row->status == 'to_do')
                                                         <td><span class="badge bg-warning rounded-4 px-3 py-2 shadow"> To Do <span></td>
@@ -164,9 +164,9 @@
                                                         <td><span class="badge bg-danger rounded-4 px-3 py-2 shadow"> Done <span></td>
                                                     @endif
                                                     <td class="d-flex">
-                                                        <a href="javascritp:void(0)"data-bs-toggle="modal" data-bs-target="#myModal{{$row->id}}"><button class="btn fa fa-eye text-success"></button></a>
-                                                        <a class="mx-1" href="{{ route('task.edit', $row->id) }}"><button class="btn fa fa-edit text-primary"></button></a>
-                                                        <form action="{{ route('task.destroy', $row->id ) }}" method="post">
+                                                        <a href="javascritp:void(0)"data-bs-toggle="modal" data-bs-target="#myModal{{$row->id}}"><button class=" m-1 btn fa fa-eye text-success"></button></a>
+                                                        <a class="m-1" href="{{ route('task.edit', $row->id) }}" ><button class="btn fa fa-edit text-primary"></button></a>
+                                                        <form action="{{ route('task.destroy', $row->id ) }}" method="post" class="m-1">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class=" btn fa fa-trash text-danger" onclick="return confirm('Are you sure to delete this user?')"></button>
@@ -205,7 +205,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="col">Description</th>
-                                    <td>{{ $row->description }}</td>
+                                    <td><div class="overflow">{{ $row->description }}</div></td>
                                 </tr>
                                 <tr>
                                     <th scope="col">Price</th>

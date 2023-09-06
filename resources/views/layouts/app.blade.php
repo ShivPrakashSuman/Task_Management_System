@@ -9,9 +9,9 @@
 
     <div id="app">
         <!----  Top Bar      ----->
-        <header class="row">
-            @include('includes.header')
-        </header>
+        <!-- <header class="row">
+          
+        </header> -->
         
         <!----  main content  class="py-4" ----->
         <main class="row">
