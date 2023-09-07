@@ -13,10 +13,10 @@ class taskController extends Controller
     public function index()
     {
         $id = auth()->User()->id;
-        $todo_task_list = taskModel::where('user_id','=',$id)->Where('status','=','to_do')->get();
-        $inprogress_task_list = taskModel::where('user_id','=',$id)->Where('status','=','in_progress')->get();
-        $on_approval_task_list = taskModel::where('user_id','=',$id)->Where('status','=','on_approval')->get();
-        $done_task_list = taskModel::where('user_id','=',$id)->Where('status','=','done')->get();
+        $todo_task_list = taskModel::where('user_id','=',$id)->Where('status','=','to_do')->with('getUser')->get();
+        $inprogress_task_list = taskModel::where('user_id','=',$id)->Where('status','=','in_progress')->with('getUser')->get();
+        $on_approval_task_list = taskModel::where('user_id','=',$id)->Where('status','=','on_approval')->with('getUser')->get();
+        $done_task_list = taskModel::where('user_id','=',$id)->Where('status','=','done')->with('getUser')->get();
         $all_task_list = taskModel::with('getUser')->get();
 
         return view('pages.taskList.task-list')
@@ -101,7 +101,6 @@ class taskController extends Controller
 
     public function destroy(string $id)
     {
-        dd('delete');
         taskModel::destroy($id);
         Session::flash('error', 'Deleted ! ');
         return redirect ()->to('/task');
@@ -114,3 +113,4 @@ class taskController extends Controller
     }
 
 }
+

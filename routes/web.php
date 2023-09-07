@@ -21,7 +21,9 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 |
 */
 Auth::routes();
-
+Route::get('/', function () {
+    return view('pages.404');
+});
 //  Authentication Routes...
 Route::get('/login_register', [RegisterController::class, 'showLoginRegister'])->name('login_register');
 Route::post('/registerStore', [RegisterController::class, 'create'])->name('register.store');
@@ -30,7 +32,7 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
-Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 

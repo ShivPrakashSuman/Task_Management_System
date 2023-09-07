@@ -78,83 +78,101 @@
                     </div>
 
                     <!-- Dashborad Status Start  -->
-
-                    <div class="row m-0 p-0" id="statusDashborad">
+                      <div class="row m-0 p-0" id="statusDashborad">
                         <div class="col-lg-3 mt-2">
                             <div class="box1 rounded-4 p-3" id="to_do" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
                                 <h5 class="pt-1 ps-1">To do</h5>
                                 @foreach ($todo_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
                                     <h5 class="pt-1 px-3">
-                                        <div class="overflow-single-row float-start"><b>{{ $row->title }}</b></div> 
+                                        <div class="overflow-single-row float-start"><b>{{ $row->title }}</b></div>
                                         <form action="{{ route('task.destroy', $row->id ) }}" method="post" class="m-0 float-end pt-1">
                                             @csrf @method('DELETE')
-                                            <button class="text-danger border-0 bg-transparent p-0"><i class="fa fa-times" aria-hidden="true"></i></button>
-                                        </form>                               
+                                            <button class="text-danger border-0 bg-transparent p-0" onclick="return confirm('Are you sure to delete this user?')"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                        </form>
                                     </h5>
                                     <a href="{{ route('task.show', $row->id) }}"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
-                                    <p class="ps-3 text-muted">{{ $row->due_date }} <img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20" /> </p>
+                                    <p class="ps-3 text-muted">{{ $row->due_date }}
+                                        <img class="img-fluid rounded-5 me-3 float-end" src="{{asset('storage/images/users/'.$row->getUser->image)}}"
+                                        alt="team image" class="rounded-circle" width="30" height="30" style="margin-top:-5px;"
+                                        data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="{{ $row->getUser->name }}"/>
+                                    </p>
                                 </div>
                                 @endforeach
                             </div>
                         </div>
+                        <!-- In progress  -->
                         <div class="col-lg-3 mt-2">
                             <div class="box2 rounded-4 p-3" id="in_progress" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
                                 <h5 class="pt-1 ps-4">In progress</h5>
                                 @foreach ($inprogress_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
                                     <h5 class="pt-1 px-3">
-                                        <div class="overflow-single-row float-start"><b>{{ $row->title }}</b></div> 
+                                        <div class="overflow-single-row float-start"><b>{{ $row->title }}</b></div>
                                         <form action="{{ route('task.destroy', $row->id ) }}" method="post" class="m-0 float-end pt-1">
                                             @csrf @method('DELETE')
-                                            <button class="text-danger border-0 bg-transparent p-0"><i class="fa fa-times" aria-hidden="true"></i></button>
-                                        </form>                               
+                                            <button class="text-danger border-0 bg-transparent p-0" onclick="return confirm('Are you sure to delete this user?')"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                        </form>
                                     </h5>
                                     <a href="{{ route('task.show', $row->id) }}"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
-                                    <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20" /> </p>
+                                    <p class="ps-3 text-muted">{{ $row->due_date }}
+                                        <img class="img-fluid rounded-5 me-3 float-end" src="{{asset('storage/images/users/'.$row->getUser->image)}}"
+                                        alt="team image" class="rounded-circle" width="30" height="30" style="margin-top:-5px;"
+                                        data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="{{ $row->getUser->name }}"/>
+                                    </p>
                                 </div>
                                 @endforeach
                             </div>
                         </div>
+                        <!-- On approval  -->
                         <div class="col-lg-3 mt-2">
                             <div class="box3 rounded-4 p-3" id="on_approval" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
                                 <h5 class="pt-1 ps-4">On approval</h5>
                                 @foreach ($on_approval_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
                                     <h5 class="pt-1 px-3">
-                                        <div class="overflow-single-row float-start"><b>{{ $row->title }}</b></div> 
+                                        <div class="overflow-single-row float-start"><b>{{ $row->title }}</b></div>
                                         <form action="{{ route('task.destroy', $row->id ) }}" method="post" class="m-0 float-end pt-1">
                                             @csrf @method('DELETE')
-                                            <button class="text-danger border-0 bg-transparent p-0"><i class="fa fa-times" aria-hidden="true"></i></button>
-                                        </form>                               
+                                            <button class="text-danger border-0 bg-transparent p-0" onclick="return confirm('Are you sure to delete this user?')"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                        </form>
                                     </h5>
                                     <a href="{{ route('task.show', $row->id) }}"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
-                                    <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20" /> </p>
+                                    <p class="ps-3 text-muted">{{ $row->due_date }}
+                                        <img class="img-fluid rounded-5 me-3 float-end" src="{{asset('storage/images/users/'.$row->getUser->image)}}"
+                                        alt="team image" class="rounded-circle" width="30" height="30" style="margin-top:-5px;"
+                                        data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="{{ $row->getUser->name }}"/>
+                                    </p>
                                 </div>
                                 @endforeach
                             </div>
                         </div>
+                        <!-- Done  -->
                         <div class="col-lg-3 mt-2">
                             <div class="box4 rounded-4 p-3" id="done" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
                                 <h5 class="pt-1 ps-4">Done</h5>
                                 @foreach ($done_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
                                     <h5 class="pt-1 px-3">
-                                        <div class="overflow-single-row float-start"><b>{{ $row->title }}</b></div> 
+                                        <div class="overflow-single-row float-start"><b>{{ $row->title }}</b></div>
                                         <form action="{{ route('task.destroy', $row->id ) }}" method="post" class="m-0 float-end pt-1">
-                                            @csrf @method('DELETE')
-                                            <button class="text-danger border-0 bg-transparent p-0"><i class="fa fa-times" aria-hidden="true"></i></button>
-                                        </form>                               
+                                            @csrf
+                                            @method('DELETE')
+                                           <button  type="submit"class="text-danger border-0 bg-transparent p-0"  onclick="return confirm('Are you sure to delete this user?')"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                        </form>
                                     </h5>
                                     <a href="{{ route('task.show', $row->id) }}"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
-                                    <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20" /> </p>
+                                    <p class="ps-3 text-muted">{{ $row->due_date }}
+                                        <img class="img-fluid rounded-5 me-3 float-end" src="{{asset('storage/images/users/'.$row->getUser->image)}}"
+                                        alt="team image" class="rounded-circle" width="30" height="30" style="margin-top:-5px;"
+                                        data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="{{ $row->getUser->name }}"/>
+                                    </p>
                                 </div>
                                 @endforeach
                             </div>
                         </div>
                     </div>
                     <!-- Dashborad Status Start  -->
-
                     <!-- Task list Start  -->
                     <div class="container" id="list" id="Task-list">
                         <div class="row justify-content-center">
@@ -266,68 +284,67 @@
         </div>
     </div>
 </div>
-@endsection
-<script>
-
-    function list_dashboard(){
-        if(document.getElementById("status").value == 'false'){
-            localStorage.setItem('Dashborad','contents');
-            localStorage.setItem('lit','none');
-            setValue();
-            document.getElementById("status").value = 'true';
-        } else {
-            localStorage.setItem('Dashborad','none');
-            localStorage.setItem('lit','initial');
-            setValue();
-            document.getElementById("status").value = 'false';
-        }
-    }
-    setValue();
-	 function setValue(){
-
-	    if(localStorage.getItem('lit')){
-		 let text = localStorage.getItem('Dashborad');
-         let text1 = localStorage.getItem('lit');
-         document.getElementById("statusDashborad").style.display = text;
-         document.getElementById("list").style.display = text1;
-         console.log(text);
-		}
-	 }
-
-    function dragstart_handler(ev) {
-        ev.dataTransfer.setData("text", ev.target.id);
-        ev.effectAllowed = "copyMove";
-    }
-    function dragover_handler(ev) {
-        ev.currentTarget.style.background = "";
-        ev.preventDefault();
-    }
-    function drop_handler(ev) {
-        ev.preventDefault();
-        var id = ev.dataTransfer.getData("text");
-        var ele = document.getElementById(id);
-        var ids = ["to_do","in_progress","on_approval","done"]
-        if (id == ele.id && ids.includes(ev.target.id) > -1){
-            ev.target.appendChild(document.getElementById(id));
-        }
-    }
-    function dragend_handler(ev) {
-        ev.preventDefault();
-        changeTask(ev.target.id, ev.target.parentElement.id);
-    }
-
-    function changeTask(task_id, field_id){
-        console.log('en0',task_id);
-        console.log('en1',field_id);
-        $.ajax({
-            type:'GET',
-            url: `/changeStatus?task_id=${task_id}&field_id=${field_id}`,
-            data: '',
-            success: function (data){
-                let resp = JSON.parse(data);
-                window.location.reload(true);
+    <script>
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+        })
+        function list_dashboard(){
+            if(document.getElementById("status").value == 'false'){
+                localStorage.setItem('Dashborad','contents');
+                localStorage.setItem('lit','none');
+                setValue();
+                document.getElementById("status").value = 'true';
+            } else {
+                localStorage.setItem('Dashborad','none');
+                localStorage.setItem('lit','initial');
+                setValue();
+                document.getElementById("status").value = 'false';
             }
-        });
-    }
+        }
+        setValue();
+        function setValue(){
+            if(localStorage.getItem('lit')){
+                let text = localStorage.getItem('Dashborad');
+                let text1 = localStorage.getItem('lit');
+                document.getElementById("statusDashborad").style.display = text;
+                document.getElementById("list").style.display = text1;
+            }
+        }
 
-</script>
+        function dragstart_handler(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+            ev.effectAllowed = "copyMove";
+        }
+        function dragover_handler(ev) {
+            ev.currentTarget.style.background = "";
+            ev.preventDefault();
+        }
+        function drop_handler(ev) {
+            ev.preventDefault();
+            var id = ev.dataTransfer.getData("text");
+            var ele = document.getElementById(id);
+            var ids = ["to_do","in_progress","on_approval","done"]
+            if (id == ele.id && ids.includes(ev.target.id) > -1){
+                ev.target.appendChild(document.getElementById(id));
+            }
+        }
+        function dragend_handler(ev) {
+            ev.preventDefault();
+            changeTask(ev.target.id, ev.target.parentElement.id);
+        }
+
+        function changeTask(task_id, field_id){
+            $.ajax({
+                type:'GET',
+                url: `/changeStatus?task_id=${task_id}&field_id=${field_id}`,
+                data: '',
+                success: function (data){
+                    let resp = JSON.parse(data);
+                    window.location.reload(true);
+                }
+            });
+        }
+    </script>
+
+@endsection
