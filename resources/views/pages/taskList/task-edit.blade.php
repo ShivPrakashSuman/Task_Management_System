@@ -76,11 +76,12 @@
                                           class="fadeIn bnn form-control @error('title') is-invalid @enderror"
                                           value="{{  $data->title }}" autocomplete="title" autofocus >
                                      </div>
-                                     <div class="my-3">
-                                         <input type="text" id="description" name="description"  placeholder="Description"
-                                          class="fadeIn form-control  @error('description') is-invalid @enderror"
-                                          value="{{ $data->description }}" autocomplete="description" autofocus >
-                                     </div>
+                                     <div class="my-3 mx-auto" style="width: 85%;">
+                                        <textarea  type="text" id="editor1" name="description" placeholder="Description"
+                                            class="fadeIn form-control textarea @error('description') is-invalid @enderror"
+                                            autocomplete="description" autofocus >{{ $data->description }}
+                                        </textarea> 
+                                    </div>
                                      <div class="my-3">
                                         <select type="select" class="fadeIn form-select @error('assign_id') is-invalid @enderror" aria-label="Default select example"
                                             id="assign_id" name="assign_id" autocomplete="assign_id" autofocus>
@@ -115,4 +116,34 @@
         </div>
     </div>
 </div>
+<script>
+    CKEDITOR.replace('editor1', {
+      // Define the toolbar groups as it is a more accessible solution.
+      toolbarGroups: [{
+          "name": "description",
+          "groups": ["basicstyles"]
+        },
+        {
+          "name": "paragraph",
+          "groups": ["list", "blocks"]
+        },
+        {
+          "name": "document",
+          "groups": ["mode"]
+        },
+        {
+          "name": "insert",
+          "groups": ["insert"]
+        },
+        {
+          "name": "styles",
+          "groups": ["styles"]
+        },
+        {
+          "name": "about",
+          "groups": ["about"]
+        }
+      ]
+    });
+</script>
 @endsection

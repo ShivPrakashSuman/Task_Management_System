@@ -101,6 +101,7 @@ class taskController extends Controller
 
     public function destroy(string $id)
     {
+        dd('delete');
         taskModel::destroy($id);
         Session::flash('error', 'Deleted ! ');
         return redirect ()->to('/task');

@@ -48,14 +48,18 @@
                             <h5>Task List</h5>
                         </div>
                         <div class="">
-                            <button class="btn btn-primary liststatus_btn" onclick="list_dashboard()"id="status" value="true"><i class="fa fa-edit"></i>click</button>
+                            <button class="btn btn-primary liststatus_btn" onclick="list_dashboard()"id="status" value="true"><i class="fa fa-hand-o-up fs-6 pe-2"></i>click</button>
                         </div>
                     </div>
                     <div class="col-md-4 mt-1">
                         <div class="box rounded-4">
                             <h5 class="pt-4 ps-4">Participants</h5>
-                            <img class="img-fluid ps-3 pt-2 pb-5" src="{{asset('storage/images/team.jpg')}}" style="mix-blend-mode:darken" alt="team image" width="270">
-                            <a href="{{ route('task.create') }}" class="bg-white rounded-5 mb-7" style="margin-left: 150px;"><i class="fa fa-plus p-1 " aria-hidden="true"></i></a>
+                            <p>
+                                <img class="img-fluid ps-3 pt-2 pb-5" src="{{asset('storage/images/team.jpg')}}" style="mix-blend-mode:darken" alt="team image" width="270">
+                                <a href="{{ route('task.create') }}" class="bg-white rounded-5 me-5 mt-1 float-end" style="margin-left: 150px;">
+                                <i class="fa fa-plus p-1 " aria-hidden="true"></i>
+                                </a>
+                            </p>
                         </div>
                     </div>
                     <div class="col-md-4 mt-1">
@@ -81,7 +85,13 @@
                                 <h5 class="pt-1 ps-1">To do</h5>
                                 @foreach ($todo_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
-                                    <h5 class="pt-1 ps-3"><div class="overflow-single-row"><b>{{ $row->title }}</b></div></h5>
+                                    <h5 class="pt-1 px-3">
+                                        <div class="overflow-single-row float-start"><b>{{ $row->title }}</b></div> 
+                                        <form action="{{ route('task.destroy', $row->id ) }}" method="post" class="m-0 float-end pt-1">
+                                            @csrf @method('DELETE')
+                                            <button class="text-danger border-0 bg-transparent p-0"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                        </form>                               
+                                    </h5>
                                     <a href="{{ route('task.show', $row->id) }}"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
                                     <p class="ps-3 text-muted">{{ $row->due_date }} <img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20" /> </p>
                                 </div>
@@ -93,7 +103,13 @@
                                 <h5 class="pt-1 ps-4">In progress</h5>
                                 @foreach ($inprogress_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
-                                    <h5 class="pt-1 ps-3"><div class="overflow-single-row"><b>{{ $row->title }}</b></div></h5>
+                                    <h5 class="pt-1 px-3">
+                                        <div class="overflow-single-row float-start"><b>{{ $row->title }}</b></div> 
+                                        <form action="{{ route('task.destroy', $row->id ) }}" method="post" class="m-0 float-end pt-1">
+                                            @csrf @method('DELETE')
+                                            <button class="text-danger border-0 bg-transparent p-0"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                        </form>                               
+                                    </h5>
                                     <a href="{{ route('task.show', $row->id) }}"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
                                     <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20" /> </p>
                                 </div>
@@ -105,7 +121,13 @@
                                 <h5 class="pt-1 ps-4">On approval</h5>
                                 @foreach ($on_approval_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
-                                    <h5 class="pt-1 ps-3"><div class="overflow-single-row"><b>{{ $row->title }}</b></div></h5>
+                                    <h5 class="pt-1 px-3">
+                                        <div class="overflow-single-row float-start"><b>{{ $row->title }}</b></div> 
+                                        <form action="{{ route('task.destroy', $row->id ) }}" method="post" class="m-0 float-end pt-1">
+                                            @csrf @method('DELETE')
+                                            <button class="text-danger border-0 bg-transparent p-0"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                        </form>                               
+                                    </h5>
                                     <a href="{{ route('task.show', $row->id) }}"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
                                     <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20" /> </p>
                                 </div>
@@ -117,7 +139,13 @@
                                 <h5 class="pt-1 ps-4">Done</h5>
                                 @foreach ($done_task_list as $id => $row)
                                 <div class="bg-white rounded-4 p-1 my-3" ondragend="dragend_handler(event);" ondragstart="dragstart_handler(event);" id="{{ $row->id }}"  draggable="true">
-                                    <h5 class="pt-1 ps-3"><div class="overflow-single-row"><b>{{ $row->title }}</b></div></h5>
+                                    <h5 class="pt-1 px-3">
+                                        <div class="overflow-single-row float-start"><b>{{ $row->title }}</b></div> 
+                                        <form action="{{ route('task.destroy', $row->id ) }}" method="post" class="m-0 float-end pt-1">
+                                            @csrf @method('DELETE')
+                                            <button class="text-danger border-0 bg-transparent p-0"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                        </form>                               
+                                    </h5>
                                     <a href="{{ route('task.show', $row->id) }}"><button type="button" class="btn btn-outline-primary rounded-5 px-4 my-3 ms-2">Review</button></a>
                                     <p class="ps-3 text-muted">{{ $row->due_date }}<img class="img-fluid rounded-5 me-4 float-end" src="{{asset('storage/images/download.png')}}" alt="team image" width="20" /> </p>
                                 </div>

@@ -8,7 +8,6 @@
 
     input[type=text],
     input[type=date],
-    textarea[type=text],
     select[type=select] {
         background-color: #f6f6f6;
         border: none;
@@ -80,22 +79,20 @@
                                         class="fadeIn bnn form-control @error('title') is-invalid @enderror"
                                         value="{{ old('title')}}" autocomplete="title" autofocus >
                                     </div>
-                                    <div class="my-3">
-                                        <div class="fadeIn">
+                                    <div class="my-3 mx-auto" style="width: 85%;">
                                         <textarea  type="text" id="editor1" name="description" placeholder="Description"
                                             class="fadeIn form-control textarea @error('description') is-invalid @enderror"
                                             value="{{ old('description') }}" autocomplete="description" autofocus >
-                                        </textarea>
-                                    </div>
+                                        </textarea> 
                                     </div>
                                     <div class="my-3">
-                                    <select type="select" class="fadeIn form-select @error('assign_id') is-invalid @enderror" aria-label="Default select example"
-                                        id="assign_id" name="assign_id" autocomplete="assign_id" autofocus>
-                                        <option value="" selected hidden>Task Assign</option>
-                                        @foreach ($userData as $option)
-                                            <option value="{{$option->id}}" {{ $option->id == old('assign_id')? 'selected':'' }}>{{$option->name}}</option>
-                                        @endforeach
-                                    </select>
+                                        <select type="select" class="fadeIn form-select @error('assign_id') is-invalid @enderror" aria-label="Default select example"
+                                            id="assign_id" name="assign_id" autocomplete="assign_id" autofocus>
+                                            <option value="" selected hidden>Task Assign</option>
+                                            @foreach ($userData as $option)
+                                                <option value="{{$option->id}}" {{ $option->id == old('assign_id')? 'selected':'' }}>{{$option->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="my-4">
                                         <input type="date" id="due_date" name="due_date" placeholder="Due Date"
@@ -103,10 +100,10 @@
                                         value="{{ old('date') }}" autocomplete="date" autofocus>
                                     </div>
                                     <div class="my-3">
-                                    <select type="select" class="fadeIn form-select @error('status') is-invalid @enderror" aria-label="Default select example"
-                                        id="status" name="status" autocomplete="status" autofocus>
-                                        <option value="to_do" selected>To Do</option>
-                                    </select>
+                                        <select type="select" class="fadeIn form-select @error('status') is-invalid @enderror" aria-label="Default select example"
+                                            id="status" name="status" autocomplete="status" autofocus>
+                                            <option value="to_do" selected>To Do</option>
+                                        </select>
                                     </div>
                                     <a href="/task" class="btn btn-info my-4 mx-3 backBtn">Back</a>
                                     <input type="submit" value="Submit" class="btn btn-info my-4"/>
@@ -120,7 +117,6 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('editor1', {
       // Define the toolbar groups as it is a more accessible solution.
@@ -150,5 +146,5 @@
         }
       ]
     });
-  </script>
+</script>
 @endsection

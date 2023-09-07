@@ -494,7 +494,7 @@ color:#dda8d1;
 } 
 
 .overflow-single-row {
-    width: 300px;
+    width: 270px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

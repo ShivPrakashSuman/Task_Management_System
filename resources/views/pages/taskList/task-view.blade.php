@@ -1,10 +1,10 @@
 
 <style>
     .liststatus_btn {
-        margin-top: -7px;
-        border-radius: 20px;
-        height: 35px;
-        margin-bottom: 10px;
+        margin-top: -7px !important;
+        border-radius: 20px !important;
+        height: 35px !important;
+        margin-bottom: 10px !important;
     }
 </style>
 @extends('layouts.app')
@@ -31,7 +31,7 @@
                             <h5>View Task</h5>
                         </div>    
                         <div class="">
-                            <a href='/task' class="liststatus_btn"><button class="btn btn-primary "><i class="fa fa-edit"></i>Back</button></a>
+                            <a href='/task' ><button class="btn btn-primary liststatus_btn"><i class="fa fa-hand-o-left fs-6 pe-2"></i>Back</button></a>
                         </div>    
                     </div>
                     <hr>
