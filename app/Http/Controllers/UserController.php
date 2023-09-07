@@ -38,11 +38,12 @@ class UserController extends Controller
         $validator = $this->validator($request->all());
         if($validator->fails()){
             return redirect('/user/create')->withErrors($validator)->withInput();
-        }   
+        }
         if($request->file()) {
             $fileName = time().'_'.$request->image->getClientOriginalName();
             $filePath = $request->file('image')->storeAs('images/users', $fileName, 'public');
         }
+
         $id = auth()->User()->id;
         $data = array(
             "user_id"=>$id,
@@ -70,6 +71,10 @@ class UserController extends Controller
         if($request->file()) {
             $fileName = time().'_'.$request->image->getClientOriginalName();
             $filePath = $request->file('image')->storeAs('images/users', $fileName, 'public');
+        }
+        else {
+            $loginUser = User::find($id);
+            $fileName = $loginUser->image;
         }
         $update = [
             "name"=> $request->name,
