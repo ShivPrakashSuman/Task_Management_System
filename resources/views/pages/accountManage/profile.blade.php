@@ -26,7 +26,7 @@
                                     <div class="card-body">
                                       <div class="d-flex flex-column align-items-center text-center">
                                         @if($loginUser->image)
-                                          <img src="{{asset('storage/images/users/'.$loginUser->image)}}" alt="Admin" class="rounded-circle" width="150">
+                                          <img src="{{asset('storage/images/users/'.$loginUser->image)}}" alt="Admin" class="rounded-circle" width="150" height="150">
                                         @else
                                           <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                                         @endif
@@ -140,7 +140,7 @@
                                           </div>
                                         </div>
                                       </div>
-                                    </div>    
+                                    </div>
                                   </div>
                                 </div>
                               </div>

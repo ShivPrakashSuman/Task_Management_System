@@ -94,8 +94,7 @@ height: 36px;
 border-radius: 50%;
 color: #ffeba7;
 background-color: #102770;
-background-image: url('file:///F:/image/images.jfif');
-font-family: 'unicons';
+background-image: url("file:///E:/Snapchat/1681448619Snapchat-512537616.jpg");
 content: '\eb4f';
 z-index: 20;
 top: -10px;
@@ -491,20 +490,20 @@ color:#dda8d1;
     overflow: hidden;
     height:50px;
     line-height:25px;
-} 
+}
 
 .overflow-single-row {
     width: 270px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 1; 
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 }
 .overflow {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2; 
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }

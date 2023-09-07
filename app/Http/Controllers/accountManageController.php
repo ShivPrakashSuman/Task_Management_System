@@ -48,6 +48,9 @@ class accountManageController extends Controller
         if($request->file()) {
             $fileName = time().'_'.$request->image->getClientOriginalName();
             $filePath = $request->file('image')->storeAs('images/users', $fileName, 'public');
+        } else {
+            $loginUser = User::find($id);
+            $fileName = $loginUser->image;
         }
         $update = [
             "name" => $request->name,
@@ -57,7 +60,6 @@ class accountManageController extends Controller
             "address" => $request->address,
             "image" => $fileName,
         ];
-
         User::where('id', $id)->update($update);
         Session::flash('success', 'User Updated successful!');
         return redirect ()->to('/account');

@@ -6,7 +6,7 @@
         <div>
             @if(Session::has('error'))
                 <div class="alert alert-danger text-center">
-                    {{Session('error')}} 
+                    {{Session('error')}}
                 </div>
             @endif
         </div>
@@ -31,7 +31,7 @@
                                                     <div class="section text-center">
                                                         <h4 class="mb-4 pb-3">Log In</h4>
                                                         <div class="form-group">
-                                                            <input placeholder="Username Or Email"  id="username" type="username"  name="username" 
+                                                            <input placeholder="Username Or Email"  id="username" type="username"  name="username"
                                                             class="form-control form-style @error('username') is-invalid @enderror" value="{{ old('username') }}" autocomplete="username" autofocus >
                                                             <i class="fa fa-envelope input-icon" aria-hidden="true"></i>
                                                             @error('username')
@@ -48,7 +48,7 @@
                                                         <p class="mb-0 mt-4 text-center">
                                                             <a href="{{ route('password.request') }}" class="link"> {{ __('Forgot Your Password?') }}</a>
                                                         </p>
-                                                        @endif     
+                                                        @endif
                                                     </div>
                                                 </form>
                                             </div>
@@ -77,7 +77,7 @@
                                                             @enderror
                                                         </div>
                                                         <div class="form-group mt-3">
-                                                            <input id="email" type="email" placeholder="Email" name="email" value="{{ old('email') }}" 
+                                                            <input id="email" type="email" placeholder="Email" name="email" value="{{ old('email') }}"
                                                             class="form-style form-control @error('email') is-invalid @enderror" autocomplete="email">
                                                             <i class="fa fa-envelope input-icon" aria-hidden="true"></i>
                                                             @error('email')

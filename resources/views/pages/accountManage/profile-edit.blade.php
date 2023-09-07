@@ -68,7 +68,6 @@
             <div class="m-4">
                 <div class="row m-0">
                     <!--   Change content  -->
-
                     <div class="container">
                         <div class="row justify-content-center">
                             <div id="formContent" class="shadow bg-white rounded-3 text-center mt-5">
@@ -108,7 +107,7 @@
                                     </div>
                                     <div class="my-3">
                                         <input type="file" id="image" name="image" placeholder="image" style="width: 80%;"
-                                          class="fadeIn form-control  @error('image') is-invalid @enderror" autocomplete="image" autofocus>
+                                          class="fadeIn form-control  @error('image') is-invalid @enderror" value="{{ $loginUser->image }}" autocomplete="image" autofocus>
                                           <span><img src="{{asset('storage/images/users/'.$loginUser->image)}}" class="img-fluid" alt="team image" width="38" style='height: 45px;'></span>
                                      </div>
                                     <div class="my-3">

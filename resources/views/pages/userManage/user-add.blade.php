@@ -109,11 +109,11 @@
                                         value="{{ old('mobile') }}" autocomplete="mobile" autofocus>
                                     </div>
                                     <div class="my-4">
-                                        <textarea type="text" id="address" name="address" placeholder="Your Address" 
+                                        <textarea type="text" id="address" name="address" placeholder="Your Address"
                                         class="fadeIn form-control  @error('address') is-invalid @enderror" autocomplete="address" autofocus>{{ old('address') }}</textarea>
                                     </div>
                                     <div class="my-4">
-                                        <input type="file"  id="image" name="image" autocomplete="image" value="{{old('image')}}"
+                                        <input type="file"  id="file" name="file"value="{{old('file')}}" autocomplete="image"
                                         class="fadeIn form-control  @error('image') is-invalid @enderror" autofocus>
                                         @error('image')
                                             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
