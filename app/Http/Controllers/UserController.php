@@ -53,7 +53,7 @@ class UserController extends Controller
             "password" => $request['password'],
             "mobile" => $request['mobile'],
             "address" => $request['address'],
-            "image" => $fileName
+            "image" => $fileName,
         );
         $result = User::create($data);
         Session::flash('success', 'Data SuccessFully');

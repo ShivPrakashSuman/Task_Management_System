@@ -149,7 +149,7 @@
 </div>
 <script>
     const ctx = document.getElementById('myChart');
-new Chart(ctx, {
+    new Chart(ctx, {
       type: 'line',
       data: {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -166,10 +166,9 @@ new Chart(ctx, {
           min: 0,
           max: 100
         }
-
-        }
+    }
       }
     });
-  </script>
+</script>
 @endsection
 

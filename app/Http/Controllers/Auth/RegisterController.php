@@ -65,7 +65,7 @@ class RegisterController extends Controller
             return redirect()->back();
         } catch (Exception $e) {
             Session::flash('error', $e->getMessage());
-            return redirect('/login_register');
+            return redirect('/login');
         }
     }
 }

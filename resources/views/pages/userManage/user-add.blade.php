@@ -113,7 +113,8 @@
                                         class="fadeIn form-control  @error('address') is-invalid @enderror" autocomplete="address" autofocus>{{ old('address') }}</textarea>
                                     </div>
                                     <div class="my-4">
-                                        <input type="file"  id="file" name="file"value="{{old('file')}}" autocomplete="image"
+                                        <input type="file"  id="image
+" name="image"value="{{old('file')}}" autocomplete="image"
                                         class="fadeIn form-control  @error('image') is-invalid @enderror" autofocus>
                                         @error('image')
                                             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
