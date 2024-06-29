@@ -5,13 +5,16 @@ use Illuminate\Http\Request;
 use App\Models\setting;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
-
+use Illuminate\Support\Facades\Route;
 
 class settingController extends Controller
 {
     public function index()
     {
-        $data = setting::all();
+        // $currentPath = Route::getFacadeRoot()->current()->uri();
+        // $data = setting::where('value','like','%'.$currentPath.'%')->get();
+        $data = setting::get();
+  
         return view('pages.settingManage.setting-list', compact('data'));
     }
 

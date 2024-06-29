@@ -11,20 +11,21 @@
         </div>
     </div>
     <ul class="text-secondary">
+
         <a href="{{ route('dashboard') }}" title="Dashboard">
-            <li><i class="fa fa-dashboard me-3" aria-hidden="true"></i> Dashboard </li>
+            <li class=" {{ Request::is('dashboard') ? 'active' : '' }}"><i class="fa fa-dashboard me-3" aria-hidden="true"></i> Dashboard </li>
         </a>
         <a href="{{ route('task.index') }}" title="Task">
-            <li><i class="fa fa-tasks me-3" aria-hidden="true"></i>Task </li>
+            <li class="{{ Request::is('task') ? 'active' : '' }}"><i class="fa fa-tasks me-3" aria-hidden="true"></i>Task </li>
         </a>
         <a href="{{ route('user.index') }}" title="Users">
-            <li><i class="fa fa-list-alt me-3" aria-hidden="true"></i>Users </li>
+            <li class="{{ Request::is('user') ? 'active' : '' }}"><i class="fa fa-list-alt me-3" aria-hidden="true"></i>Users </li>
         </a>
         <a href="{{ route('account.index') }}"title="Account">
-            <li><i class="fa fa-user-circle-o me-3" aria-hidden="true"></i> Account </li>
+            <li class="{{ Request::is('account') ? 'active' : '' }}"><i class="fa fa-user-circle-o me-3" aria-hidden="true"></i> Account </li>
         </a>
         <a href="javascript:void(0)" title="" class="align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#setting" aria-expanded="false">
-            <li><i class="fa fa-cog me-3" aria-hidden="true"></i><span class="menu-text"> Setting </span></li>
+            <li class="{{ (Request::is('setting') || Request::is('setting/create')) ? 'active' : '' }}"><i class="fa fa-cog me-3" aria-hidden="true"></i><span class="menu-text"> Setting </span></li>
         </a>
         <div class="collapse mx-5" id="setting" style="">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">

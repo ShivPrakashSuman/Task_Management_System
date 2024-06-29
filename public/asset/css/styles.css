@@ -406,6 +406,12 @@ transition: all 0.9s;
 
 /* border-left: 5px solid #054ade;*/
 }
+
+.sidebar > ul > a > li.active{
+    background: #fbf5ec;
+    color: #11a1fd;
+    transition: all 0.9s;
+}
 .overFlowTex{
 transition: all 0.9s;
 font-size: 15px;
